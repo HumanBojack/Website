@@ -1,12 +1,12 @@
 import yaml from "js-yaml";
 
-export const markdownMetaParser = async (fileContent) => {
+export const markdownMetaParser = async (fileContent: string): Promise<{ metadata?: object[], content: string }> => {
 
-  const hasMetadata = /^-{3}\n(\w+: [\S ]+\n)+---/g.test(fileContent);
-  if (!hasMetadata) return;
-
+  const metadataBegining = (fileContent.slice(0, 3) === "---") 
   const exp = /\n(\.{3}|-{3})/g;
   const metadataEnd = exp.exec(fileContent);
+
+  if (!metadataBegining || !metadataEnd) return { content: fileContent };
 
   const metadata = await yaml.load(fileContent.slice(0, metadataEnd.index));
 
