@@ -18,13 +18,30 @@
 
 <script lang="ts">
   import xss from 'xss';
+  import hljs from 'highlight.js';
   import { marked } from 'marked';
   
   export let article;
+
+  marked.setOptions({
+    highlight: (code, lang) => {
+      const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+      const highlightedCode = hljs.highlight(code, { language }).value
+      return highlightedCode;
+    }
+  });
   
   const meta = article.metadata;
 
-  const content = xss(marked(article.content));
+  // we might want to use sanitize-html insead of xss
+  const content = xss(marked.parse(article.content), {
+    onIgnoreTagAttr: (tag, name, value, isWhiteAttr) => {
+      if (value.slice(0, 9) == "language-" || value.slice(0, 5) == "hljs-") {
+        return name + '="' + xss.escapeAttrValue(value) + '"';
+      }
+    }
+  })
+
 </script>
 
 <svelte:head>
@@ -49,7 +66,6 @@
       </p>
     {/if}
   </div>
-  
   
   
   <div class="article">
