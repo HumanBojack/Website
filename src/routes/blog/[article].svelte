@@ -1,12 +1,13 @@
 <script context="module" lang="ts">
   export const load = async ({ params, fetch }: { params: { article: string }, fetch: Function }) => {
     const articleName = params.article;
-
+    
     const response = await fetch(`/api/blog/${articleName}`);
     if (response.status != 200) return response;
-
+    
     const article = await response.json();
-
+    
+    
     return {
       props: {
         article: article
@@ -16,9 +17,14 @@
 </script>
 
 <script lang="ts">
+  import xss from 'xss';
   import { marked } from 'marked';
+  
   export let article;
+  
   const meta = article.metadata;
+
+  const content = xss(marked(article.content));
 </script>
 
 <svelte:head>
@@ -26,32 +32,70 @@
   <meta property="og:title" content={meta.title} />
 </svelte:head>
 
-<h1>{meta.title}</h1>
-<p>Published on {meta.date}</p>
-<p>Published on
-  <time datetime={meta.date}>{new Date(meta.date).toLocaleDateString("en-US", { year: "numeric", month: 'long', day: 'numeric' })}</time>
-</p>
-<p>{meta.readTime}min read</p>
-
-{#if meta.categories}
-<ul>
-  {#each meta.categories as category}
-  <li>{category}</li>
-  {/each}
-</ul>
-{/if}
-
-<p>The markdown is parsed but we also need to purify it</p>
-
-
-<div>
-  {@html marked(article.content)}
+<div class="main_wrapper">
+  
+  <div class="presentation">
+    <h1>{meta.title}</h1>
+    <p>
+      <time datetime={meta.date}>{new Date(meta.date).toLocaleDateString("en-US", { year: "numeric", month: 'long', day: 'numeric' })}</time>
+      — a {meta.readTime} minute{meta.readTime > 1 ? "s" : ""} read
+    </p>
+    
+    {#if meta.categories}
+      <p class="categories">
+        {#each meta.categories as category}
+          <span>{category}</span>
+        {/each}
+      </p>
+    {/if}
+  </div>
+  
+  
+  
+  <div class="article">
+    {@html content}
+  </div>
 </div>
 
-<style>
-  div {
+<style lang="scss">
+  .main_wrapper {
+    max-width: 50rem;
+    margin: 2rem auto;
+  }
+
+  .article {
     padding: 1rem;
     margin: 2rem auto;
     max-width: 45rem;
   }
+
+  .presentation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .categories {
+    /* width: 50%; */
+    display: flex;
+    justify-content: center;
+
+    span {
+      margin-top: auto;
+      margin-bottom: auto;
+      padding: 3px 3px 1px 3px;
+  
+      background-color: var(--primary);
+      color: var(--background);
+      text-transform: uppercase;
+
+      border-radius: 2px;
+    }
+
+    span:not(:first-child) {
+      margin-inline-start: 10px;
+    }
+  }
+
+
 </style>
