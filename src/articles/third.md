@@ -1,11 +1,21 @@
 ---
 title: This is the third (and a really long) article
 date: 2022-07-10
+categories:
+- this
+- one
+- has
+- many
+- categories
+- dingus
+- more
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ultrices pretium mauris, at lacinia orci vulputate ac. Suspendisse luctus, sapien at rhoncus lobortis, mi augue iaculis velit, in facilisis mi massa vitae nibh. Pellentesque sagittis ligula eget condimentum ornare. Mauris lobortis nisi et mattis porta. Etiam a leo nunc. Praesent ultrices, urna et facilisis sodales, neque urna sodales nibh, nec volutpat dui tortor bibendum ligula. Cras aliquam sodales ante, eget iaculis diam rutrum in. Nulla fermentum ex in mauris molestie varius. Phasellus faucibus eu massa eget pellentesque.
 
 Sed non dui quis mi pulvinar aliquet. Aliquam quis dignissim felis. In nunc sem, semper quis diam ut, porta tristique nunc. Cras eu lorem in dui egestas lacinia in nec augue. Curabitur urna quam, aliquam vel auctor ac, pulvinar et arcu. Fusce tellus risus, elementum in elementum sit amet, feugiat ut quam. Maecenas malesuada neque vitae justo porttitor tincidunt.
+
+***
 
 Etiam malesuada rutrum nisl, eu volutpat turpis finibus vitae. Nam lacus nulla, placerat eu rutrum sed, pretium vitae mauris. Phasellus in orci sem. Sed elementum, magna ac gravida porta, tellus tortor faucibus nibh, quis ultrices enim neque et odio. Vivamus blandit nunc dui, id viverra magna mollis vel. Nam ut congue lacus. Ut dapibus magna nec tellus semper fermentum. Ut ut commodo leo. Duis non viverra felis. Phasellus nec mauris mollis, ornare diam ut, sagittis orci. Phasellus vitae interdum elit. Curabitur quis lorem nec metus posuere ultrices. Etiam sapien felis, iaculis vitae porta eget, rutrum ac sem. Vivamus eget maximus mi. Nulla ut ullamcorper massa, non auctor neque. Donec ultricies ex vel dui consectetur facilisis.
 
