@@ -80,22 +80,6 @@
 
 <div class="main_wrapper">
   <div class="category_filter">
-    <h2>Search</h2>
-    <div class="selected_categories">
-      {#each categories
-        .filter(elm => elm.selected)
-        .sort(alphabetical)
-        as category (category.name)}
-        <span
-          on:click="{() => toggleCategory(category)}"
-          animate:flip
-          >
-          <!-- in:receive={{key: category.name}}
-          out:send={{key: category.name}} -->
-          {category.name}
-        </span>
-      {/each}
-    </div>
 
     <div class="actions" class:invisible={!selectedCategories.length}>
       <button on:click={(e) => copy(e, $page.url.host + "/blog/" + composeCategoryParams(selectedCategories))}
@@ -108,11 +92,13 @@
 
     <div class="categories">
       {#each categories
-        .filter(elm => postCount[elm.name] && !elm.selected)
+        .filter(elm => postCount[elm.name])
+        .sort((a, b) => b.selected - a.selected)
         as category (category.name)}
         <span
           on:click="{() => toggleCategory(category)}"
           animate:flip
+          class:selected={category.selected}
           >
           <!-- in:receive={{key: category.name}}
           out:send={{key: category.name}} -->
@@ -123,21 +109,18 @@
       {/each}
     </div>
 
-
-
-
   </div>
   
   <div class="blog_posts">
-    <h1>{filteredPosts.length} posts</h1>
+    <h1>{filteredPosts.length} post{filteredPosts.length == 1 ? "" : "s"}</h1>
     <PostsList posts={filteredPosts} />
   </div>
 </div>
 
 <style lang="scss">
   .main_wrapper {
-    max-width: var(--max-width);
-    margin: 8% 30px;
+    max-width: $max-width;
+    margin: 8% auto;
     
     display: grid;
     gap: 4rem;
@@ -162,67 +145,45 @@
     align-items: center;
   }
 
+  
   .actions {
     display: flex;
-  }
 
-  button {
-    border: none;
-    background-color: transparent;
-    color: var(--text);
-    cursor: pointer;
-    margin: 0 3px;
-  }
-
-  .categories {
-    /* display: grid; */
-
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-
-    span {
-      margin: 3px;
+    button {
+      border: none;
+      background-color: transparent;
+      color: var(--text);
+      cursor: pointer;
+      margin: 0 3px;
     }
   }
   
-  .selected_categories {
-    min-height: 25px;
-    width: 100%;
+  
+  .categories {
+    /* display: grid; */
+    
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-wrap: wrap;
-
-    span {
-      margin: 2px;
-      font-size: 0.8rem;
-      border-radius: 15px;
-      padding: 2px 5px 1px 5px;
-    }
-
-    /* span:not(:first-child) {
-      margin-inline-start: 10px;
-    } */
   }
-
+  
+  
   span {
-    /* margin-top: auto;
-    margin-bottom: auto; */
+    margin: 3px;
     padding: 4px 10px 2px 10px;
 
     background-color: var(--primary);
     color: var(--background);
     /* text-transform: uppercase; */
     text-transform: capitalize;
-
+    
     border-radius: 15px;
-
+    
     cursor: pointer;
 
-    /* &.active {
-      color: blue;
-    } */
+    &.selected {
+      background-color: var(--secondary);
+    }
   }
   
 </style>
