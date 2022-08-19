@@ -1,1 +1,50 @@
-$primary: #ea2;
+@use "sass:color";
+
+$themes: (
+  "light": (
+    "primary": #B6465F,     // Accent 1
+    "secondary": #78A1BB,   // Accent 2
+    "background": #FDF5ED,  // Neutral 1
+    "neutral": #2C2A4A,     // Neutral 2
+    "contrast": #E28413,    // Contrast (call to action)
+    "muted": #535353b0,
+    "text": #303437,
+    "codeblock": #dbd4ce
+  ),
+  "dark": (
+    "primary": #88d498,
+    "secondary": #db5375,
+    "background": #303437,
+    "neutral": #fff,
+    "contrast": #fff,
+    "muted": #bdbdbd,
+    "text": #FDF5ED
+  )
+  );
+
+$max-width: 1200px;
+$margin: 30px;
+$max-width-margin: $max-width + (2 * $margin);
+
+$article-max-width: 720px;
+$article-max-width-margin: $article-max-width + (2 * $margin);
+
+
+@each $theme-name, $properties in $themes {
+  .#{$theme-name} {
+    // define a css variable for each property
+    @each $name, $property in $properties {
+      --#{$name}: #{$property};
+
+      @if ($name == "primary") {
+        --#{$name}-dark: #{color.scale($property, $lightness: -10%)};
+        --#{$name}-darker: #{color.scale($property, $lightness: -20%)};
+      }
+    }
+  }
+};
+
+:root {
+  --max-width: $max-width;
+  --margin: $margin;
+}

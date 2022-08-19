@@ -20,27 +20,29 @@
   import xss from 'xss';
   import hljs from 'highlight.js';
   import { marked } from 'marked';
+
+  import "$lib/styles/blog.scss";
   
   export let article;
 
   marked.setOptions({
     highlight: (code, lang) => {
       const language = hljs.getLanguage(lang) ? lang : 'plaintext';
-      const highlightedCode = hljs.highlight(code, { language }).value
+      const highlightedCode = hljs.highlight(code, { language }).value // need to add an hljs copy option
       return highlightedCode;
     }
   });
   
   const meta = article.metadata;
 
-  // we might want to use sanitize-html insead of xss
   const content = xss(marked.parse(article.content), {
     onIgnoreTagAttr: (tag, name, value, isWhiteAttr) => {
-      if (value.slice(0, 9) == "language-" || value.slice(0, 5) == "hljs-") {
+      if (value.slice(0, 9) == "language-" || value.slice(0, 4) == "hljs") {
         return name + '="' + xss.escapeAttrValue(value) + '"';
       }
     }
   })
+  // const content = marked.parse(article.content);
 
 </script>
 
@@ -53,18 +55,23 @@
   
   <div class="presentation">
     <h1>{meta.title}</h1>
+    {#if meta.hero}
+      <img src="/images/hero/{meta.hero}" alt={meta.hero_alt}/>
+    {/if}
     <p>
       <time datetime={meta.date}>{new Date(meta.date).toLocaleDateString("en-US", { year: "numeric", month: 'long', day: 'numeric' })}</time>
       — a {meta.readTime} minute{meta.readTime > 1 ? "s" : ""} read
     </p>
     
+
     {#if meta.categories}
-      <p class="categories">
+      <div class="categories">
         {#each meta.categories as category}
-          <span>{category}</span>
+          <a href="/blog?category={category}">{category}</a>
         {/each}
-      </p>
+      </div>
     {/if}
+
   </div>
   
   
@@ -75,43 +82,56 @@
 
 <style lang="scss">
   .main_wrapper {
-    max-width: 50rem;
+    // max-width: 50rem;
+    max-width: $article-max-width;
     margin: 2rem auto;
+
+    @media (max-width: $article-max-width-margin) {
+      margin: 8% 30px;
+    }
   }
 
   .article {
-    padding: 1rem;
     margin: 2rem auto;
-    max-width: 45rem;
   }
+  
 
   .presentation {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    min-height: 130px;
+    justify-content: space-between;
+    & > * {
+      margin: 0;
+    }
+
+    img {
+      object-fit: cover;
+      aspect-ratio: 16/9;
+      width: 100%;
+    }
+
   }
 
-  .categories {
-    /* width: 50%; */
+  .categories {    
     display: flex;
     justify-content: center;
-
-    span {
-      margin-top: auto;
-      margin-bottom: auto;
-      padding: 3px 3px 1px 3px;
-  
-      background-color: var(--primary);
-      color: var(--background);
-      text-transform: uppercase;
-
-      border-radius: 2px;
-    }
-
-    span:not(:first-child) {
-      margin-inline-start: 10px;
-    }
+    flex-wrap: wrap;
   }
+  
+  a {
+    margin: 3px;
+    padding: 4px 10px 2px 10px;
 
+    background-color: var(--primary);
+    color: var(--background);
+    text-transform: capitalize;
+    
+    border-radius: 15px;
+
+    text-decoration: none;
+  }
 
 </style>
