@@ -7,7 +7,7 @@ $themes: (
     "background": #FDF5ED,  // Neutral 1
     "neutral": #2C2A4A,     // Neutral 2
     "contrast": #E28413,    // Contrast (call to action)
-    "muted": #535353b0,
+    "muted": #535353d8,
     "text": #303437,
     "codeblock": #dbd4ce
   ),
@@ -23,11 +23,13 @@ $themes: (
   );
 
 $max-width: 1200px;
-$margin: 30px;
+$margin: 20px;
 $max-width-margin: $max-width + (2 * $margin);
 
 $article-max-width: 720px;
 $article-max-width-margin: $article-max-width + (2 * $margin);
+
+$light: #FDF5ED;
 
 
 @each $theme-name, $properties in $themes {

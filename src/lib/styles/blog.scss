@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,500');
+
+pre code {
+  font-family: 'IBM Plex Mono', sans-serif;
+
+  display: block;
+  padding: 1rem;
+
+  background: #303030;
+  color: #c5c8c6;
+
+  overflow: scroll;
+}
+
+img {
+  display: block;
+  margin: auto;
+}
+
+img + em {
+  display: block;
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+
+  margin-bottom: 50px;
+}
+
+.super {
+  vertical-align: super;
+  font-size: 0.8rem;
+}
+
+h1 {
+  text-align: center;
+}
