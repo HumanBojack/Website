@@ -34,6 +34,19 @@
     }
   });
   marked.use({ renderer: footnotes });
+
+  const headings = {
+    heading(text, level) {
+      const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+
+      return `
+            <h${level}>
+              <a name="${escapedText}" class="anchor" href="#${escapedText}">
+                #</a>${"" + text}
+            </h${level}>`;
+    }
+  }
+  marked.use({ renderer: headings })
   
   const meta = article.metadata;
 
@@ -119,6 +132,9 @@
       color: var(--muted);
     }
 
+    h1 {
+      text-align: center;
+    }
 
     .hero {
       position:relative;
