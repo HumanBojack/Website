@@ -19,7 +19,7 @@
 
 <script lang="ts">
   // import { getCategories } from "$lib/helpers/getCategories";
-  import { alphabetical } from '$lib/helpers/sortCategories'
+  // import { alphabetical } from '$lib/helpers/sortCategories'
   import { composeCategoryParams } from "$lib/helpers/composeCategoryParams";
   import { copy } from "$lib/helpers/copy.ts";
 
@@ -86,7 +86,6 @@
         >Copy</button>
       <button on:click={resetSearch}>Reset</button>
     </div>
-    <!-- <p>{$page.url.host}/blog/{composeCategoryParams(selectedCategories)}</p> -->
 
     <hr/>
 
@@ -95,6 +94,7 @@
         .filter(elm => postCount[elm.name])
         .sort((a, b) => b.selected - a.selected)
         as category (category.name)}
+        <!-- get the categories that have at least a post, display the selected categories first -->
         <span
           on:click="{() => toggleCategory(category)}"
           animate:flip
@@ -159,22 +159,19 @@
   }
   
   
-  .categories {
-    /* display: grid; */
-    
+  .categories {    
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
   }
   
-  
   span {
     margin: 3px;
-    padding: 4px 10px 2px 10px;
+    // padding: 4px 10px 2px 10px
+    padding: 1px 8px;
 
     background-color: var(--primary);
     color: var(--background);
-    /* text-transform: uppercase; */
     text-transform: capitalize;
     
     border-radius: 15px;
