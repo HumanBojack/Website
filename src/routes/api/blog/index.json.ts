@@ -3,11 +3,11 @@ import { markdownMetaParser } from "$lib/helpers/mardownMetaParser";
 import { getReadTime } from "$lib/helpers/getReadTime";
 
 export const GET = async () => {
-  const allPostFilesNames = await fs.promises.readdir("static/articles/");
+  const allPostFilesNames = await fs.promises.readdir("articles/");
 
   const allPostFiles = await Promise.all(
     allPostFilesNames.map(async (file) => {
-      const markdownFile = await fs.promises.readFile(`static/articles/${file}`, 'utf-8')
+      const markdownFile = await fs.promises.readFile(`articles/${file}`, 'utf-8')
       const parsedMeta: { metadata?: object, content: string } = await markdownMetaParser(markdownFile);
       const metadata = parsedMeta.metadata;
 

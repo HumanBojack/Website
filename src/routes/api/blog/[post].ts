@@ -6,7 +6,7 @@ export const GET = async ({ params }: { params: { post:string }}) => {
   const articleName = params.post;
 
   try {
-    const markdownFile = await fs.promises.readFile(`static/articles/${articleName}.md`, 'utf-8');
+    const markdownFile = await fs.promises.readFile(`articles/${articleName}.md`, 'utf-8');
     const parsedMeta: { metadata: object, content: string } = await markdownMetaParser(markdownFile);
 
     parsedMeta.metadata.readTime = await getReadTime(parsedMeta.content);
