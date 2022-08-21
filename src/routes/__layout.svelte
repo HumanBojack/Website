@@ -11,10 +11,10 @@
 </script>
 
 <script lang="ts">
-  import Header from '$lib/components/Header.svelte';
-  import '$lib/styles/style.scss';
   import '$lib/styles/const.scss'
+  import '$lib/styles/style.scss';
   import '$lib/styles/lioshi.css'
+  import Header from '$lib/components/Header.svelte';
   import { fade } from 'svelte/transition';
 
   export let currentRoute;
