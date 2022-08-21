@@ -41,6 +41,8 @@ $light: #FDF5ED;
       @if ($name == "primary") {
         --#{$name}-dark: #{color.scale($property, $lightness: -10%)};
         --#{$name}-darker: #{color.scale($property, $lightness: -20%)};
+
+        --highlight: #{color.scale($property, $alpha: -60%)};
       }
     }
   }
