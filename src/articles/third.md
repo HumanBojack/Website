@@ -9,6 +9,8 @@ categories:
 - categories
 - dingus
 - more
+hero: photographer.jpg
+hero_alt: A man holding a camera
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ultrices pretium mauris, at lacinia orci vulputate ac. Suspendisse luctus, sapien at rhoncus lobortis, mi augue iaculis velit, in facilisis mi massa vitae nibh. Pellentesque sagittis ligula eget condimentum ornare. Mauris lobortis nisi et mattis porta. Etiam a leo nunc. Praesent ultrices, urna et facilisis sodales, neque urna sodales nibh, nec volutpat dui tortor bibendum ligula. Cras aliquam sodales ante, eget iaculis diam rutrum in. Nulla fermentum ex in mauris molestie varius. Phasellus faucibus eu massa eget pellentesque.
