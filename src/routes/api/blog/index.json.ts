@@ -3,6 +3,11 @@ import { markdownMetaParser } from "$lib/helpers/mardownMetaParser";
 import { getReadTime } from "$lib/helpers/getReadTime";
 
 export const GET = async () => {
+
+  fs.readdir(process.cwd(), function(err, items) {
+    console.log(items);
+  });
+
   const allPostFilesNames = await fs.promises.readdir(`${import.meta.env.VITE_STATIC_FOLDER}/articles/`);
 
   const allPostFiles = await Promise.all(
