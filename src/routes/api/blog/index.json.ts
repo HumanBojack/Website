@@ -3,7 +3,11 @@ import { markdownMetaParser } from "$lib/helpers/mardownMetaParser";
 import { getReadTime } from "$lib/helpers/getReadTime";
 
 export const GET = async () => {
-
+  console.log("hello");
+  fs.readdir(".", function(err, items) {
+    console.log(items);
+  });
+  console.log(process.cwd())
   fs.readdir(process.cwd(), function(err, items) {
     console.log(items);
   });
