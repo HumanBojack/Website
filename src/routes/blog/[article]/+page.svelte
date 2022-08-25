@@ -1,21 +1,3 @@
-<script context="module" lang="ts">
-  export const load = async ({ params, fetch }: { params: { article: string }, fetch: Function }) => {
-    const articleName = params.article;
-    
-    const response = await fetch(`/api/blog/${articleName}`);
-    if (response.status != 200) return response;
-    
-    const article = await response.json();
-    
-    
-    return {
-      props: {
-        article: article
-      }
-    }
-  }
-</script>
-
 <script lang="ts">
   import xss from 'xss';
   import hljs from 'highlight.js';
@@ -24,7 +6,8 @@
 
   import "$lib/styles/blog.scss";
   
-  export let article;
+  export let data;
+  const { article } = data;
 
   marked.setOptions({
     highlight: (code, lang) => {

@@ -1,6 +1,7 @@
 import fs from "fs";
 import { markdownMetaParser } from "$lib/helpers/mardownMetaParser";
 import { getReadTime } from "$lib/helpers/getReadTime";
+import { json } from '@sveltejs/kit';
 
 export const GET = async () => {
   console.log("hello");
@@ -42,7 +43,5 @@ export const GET = async () => {
     return (new Date(b.meta.date).getTime() - new Date(a.meta.date).getTime());
   })
 
-  return {
-    body: sortedPosts
-  }
+  return json(sortedPosts);
 }

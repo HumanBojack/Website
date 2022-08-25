@@ -1,15 +1,3 @@
-<script context="module">
-  export const load = ({ url }) => {
-    const currentRoute = url.pathname;
-
-    return {
-      props: {
-        currentRoute
-      }
-    }
-  }
-</script>
-
 <script lang="ts">
   import '$lib/styles/const.scss'
   import '$lib/styles/style.scss';
@@ -17,14 +5,14 @@
   import Header from '$lib/components/Header.svelte';
   import { fade } from 'svelte/transition';
 
-  export let currentRoute;
-  $: isMainPage = (currentRoute == "/")
+  export let data;
+  $: isMainPage = (data.currentRoute == "/")
 
 </script>
 
 <Header />
 
-{#key currentRoute}
+{#key data.currentRoute}
   <main in:fade={{ duration: 300 }} class:isMainPage>
     <slot />
   </main>

@@ -1,21 +1,11 @@
-<script context="module" lang="ts">
-  export const load = async ({ fetch }: { fetch: Function; }) => {
-    const postsResponse = await fetch('/api/blog.json');
-    const posts: JSON[] = await postsResponse.json();
-
-    return {
-      props: {
-        posts: posts
-      }
-    }
-  };
-
-</script>
-
 <script lang="ts">
+
   import Presentation from "$lib/components/Presentation.svelte"; 
   import PostsList from "$lib/components/PostsList.svelte";
-  export let posts: { meta: { title: string, date: string }, path: string }[];
+
+  export let data;
+  const { posts }: { meta: { title: string, date: string }, path: string }[] = data;
+
 </script>
 
 <svelte:head>

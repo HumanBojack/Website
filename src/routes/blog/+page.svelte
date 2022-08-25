@@ -1,24 +1,5 @@
-<script context="module" lang="ts">
-  import { getCategories } from "$lib/helpers/getCategories";
-
-  export const load = async ({ url, fetch }: { url, fetch: Function; }) => {
-    const postsResponse = await fetch('/api/blog.json');
-    const posts: JSON[] = await postsResponse.json();
-
-    const paramsCategories = url.searchParams.getAll('category');
-    const categories = getCategories(posts, paramsCategories);
-    
-    return {
-      props: {
-        posts: posts,
-        categories: categories
-      }
-    }
-  }
-</script>
-
 <script lang="ts">
-  // import { getCategories } from "$lib/helpers/getCategories";
+  import { getCategories } from "$lib/helpers/getCategories";
   // import { alphabetical } from '$lib/helpers/sortCategories'
   import { composeCategoryParams } from "$lib/helpers/composeCategoryParams";
   import { copy } from "$lib/helpers/copy.ts";
@@ -31,8 +12,10 @@
 
   import PostsList from "$lib/components/PostsList.svelte";
 
-  export let posts: { meta: { title: string, date: string }, path: string }[];
-  export let categories;
+  export let data;
+
+  // export let posts: { meta: { title: string, date: string }, path: string }[];
+  let { posts, categories } = data;
 
   const [send, receive] = crossfade({
 		fallback(node, params) {

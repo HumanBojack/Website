@@ -1,3 +1,4 @@
+import { json } from '@sveltejs/kit';
 import fs from "fs";
 import { markdownMetaParser } from "$lib/helpers/mardownMetaParser";
 import { getReadTime } from "$lib/helpers/getReadTime";
@@ -11,16 +12,13 @@ export const GET = async ({ params }: { params: { post:string }}) => {
 
     parsedMeta.metadata.readTime = await getReadTime(parsedMeta.content);
 
-    return {
-      body: parsedMeta
-    }
+    return json(parsedMeta)
 
   } catch (error: any) {
-    return {
-      status: 404,
-      body: {
-        error: error?.message
-      }
-    }
+    return json({
+      error: error?.message
+    }, {
+      status: 404
+    })
   }
 }
