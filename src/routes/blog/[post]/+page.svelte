@@ -7,31 +7,31 @@
   import "$lib/styles/blog.scss";
   
   export let data;
-  const { article } = data;
-
-  marked.setOptions({
-    highlight: (code, lang) => {
-      const language = hljs.getLanguage(lang) ? lang : 'plaintext';
-      const highlightedCode = hljs.highlight(code, { language }).value // need to add an hljs copy option
-      return highlightedCode;
-    }
-  });
-  marked.use({ renderer: footnotes });
-
-  const headings = {
-    heading(text, level) {
-      const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
-
-      return `
-            <h${level}>
-              <a name="${escapedText}" class="anchor" href="#${escapedText}">
-                #</a>${"" + text}
-            </h${level}>`;
-    }
-  }
-  marked.use({ renderer: headings })
+  const { Content, metadata } = data;
   
-  const meta = article.metadata;
+  // const readTime = getReadTime(Content);
+
+  // marked.setOptions({
+  //   highlight: (code, lang) => {
+  //     const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+  //     const highlightedCode = hljs.highlight(code, { language }).value // need to add an hljs copy option
+  //     return highlightedCode;
+  //   }
+  // });
+  // marked.use({ renderer: footnotes });
+
+  // const headings = {
+  //   heading(text, level) {
+  //     const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+
+  //     return `
+  //           <h${level}>
+  //             <a name="${escapedText}" class="anchor" href="#${escapedText}">
+  //               #</a>${"" + text}
+  //           </h${level}>`;
+  //   }
+  // }
+  // marked.use({ renderer: headings })
 
   // We are not using xss yet since we have issue of it blocking our markdown (title id, checklist...)
   // const content = xss(marked.parse(article.content), {
@@ -42,36 +42,35 @@
   //     }
   //   }
   // })
-  const content = marked.parse(article.content);
 
 </script>
 
 <svelte:head>
-  <title>{meta.title} - Romain</title>
-  <meta property="og:title" content={meta.title} />
+  <title>{metadata.title} - Romain</title>
+  <meta property="og:title" content={metadata.title} />
 </svelte:head>
 
 <div class="main_wrapper">
   
   <div class="presentation">
-    {#if meta.hero}
+    {#if metadata.hero}
       <div class="hero">
-        <h1>{meta.title}</h1>
-        <img src="/images/hero/{meta.hero}" alt={meta.hero_alt}/>
+        <h1>{metadata.title}</h1>
+        <img src="/images/hero/{metadata.hero}" alt={metadata.hero_alt}/>
       </div>
     {:else}
-      <h1>{meta.title}</h1>
+      <h1>{metadata.title}</h1>
     {/if}
     <p>
-      <time datetime={meta.date}>
-        {new Date(meta.date).toLocaleDateString("en-US", { year: "numeric", month: 'long', day: 'numeric' })}
+      <time datetime={metadata.date}>
+        {new Date(metadata.date).toLocaleDateString("en-US", { year: "numeric", month: 'long', day: 'numeric' })}
       </time>
-      — a {meta.readTime} minute{meta.readTime > 1 ? "s" : ""} read
+      <!-- TODO: add the readTime to the +page.ts -->
+      <!-- — a {metadata.readTime} minute{metadata.readTime > 1 ? "s" : ""} read -->
     </p>
     
-
     <div class="categories">
-      {#each meta.categories as category}
+      {#each metadata.categories as category}
         <a href="/blog?category={category}">{category}</a>
       {/each}
     </div>
@@ -81,7 +80,8 @@
   
   
   <div class="article">
-    {@html content}
+    <!-- <svelte:component this={Content} /> // A nice alternative -->
+    <Content />
   </div>
 </div>
 
