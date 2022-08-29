@@ -1,5 +1,3 @@
-import { getReadTime } from "$lib/helpers/getReadTime";
-
 export const load = async ({ params }: { params: { post: string }}) => {
   const articleName = params.post;
 
