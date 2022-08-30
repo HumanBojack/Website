@@ -36,6 +36,12 @@
 		"highlight.js": "^11.6.0",
 		"js-yaml": "^4.1.0",
 		"marked": "^4.0.18",
+		"rehype-autolink-headings": "^6.1.1",
+		"rehype-slug": "^5.0.1",
+		"remark-footnotes": "^4.0.1",
+		"remark-frontmatter": "^4.0.1",
+		"remark-gfm": "^3.0.1",
+		"remark-parse": "^10.0.1",
 		"xss": "^1.0.13"
 	}
 }

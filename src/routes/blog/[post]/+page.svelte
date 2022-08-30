@@ -66,7 +66,7 @@
         {new Date(metadata.date).toLocaleDateString("en-US", { year: "numeric", month: 'long', day: 'numeric' })}
       </time>
       <!-- TODO: add the readTime to the +page.ts -->
-      <!-- — a {metadata.readTime} minute{metadata.readTime > 1 ? "s" : ""} read -->
+      — a {metadata.readTime} minute{metadata.readTime > 1 ? "s" : ""} read
     </p>
     
     <div class="categories">
