@@ -21,6 +21,7 @@
     {:else}
       <h1>{metadata.title}</h1>
     {/if}
+    <h5>{metadata.subtitle}</h5>
     <p>
       <time datetime={metadata.date}>
         {new Date(metadata.date).toLocaleDateString("en-US", { year: "numeric", month: 'long', day: 'numeric' })}
@@ -77,44 +78,50 @@
       text-align: center;
     }
 
-    .hero {
-      position:relative;
-      background: black;
+    h5 {
+      color: var(--text);
+    }
+  }
 
-      img {
-        opacity: 0.8;
-        display: block;
+  .hero {
+    position:relative;
 
-        object-fit: cover;
+    img {
+      opacity: 0.8;
+      display: block;
 
-        aspect-ratio: 2/1;
-        width: 100%;
-      }
+      object-fit: cover;
 
+      aspect-ratio: 2/1;
+      width: 100%;
+    }
+
+    h1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      
+      margin: 0;
+      width: 100%;
+
+      color: $light;
+      text-align: center;
+
+      background: rgb(0,0,0);
+      background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(48,52,55,0.38697485830269607) 50%, rgba(0,0,0,0) 100%);
+    }
+
+    @media (max-width: $article-max-width-margin) {
       h1 {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 1;
-        
-        margin: 0;
-        width: 100%;
-
-        color: $light;
-        text-align: center;
-
-        background: rgb(0,0,0);
-        background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(48,52,55,0.38697485830269607) 50%, rgba(0,0,0,0) 100%);
-      }
-
-      @media (max-width: 400px) {
-        img {
-          aspect-ratio: 4/3;
-        }
+        position: relative;
+        transform: none;
+        right: 0;
+        left: 0;
+        margin-bottom: 1rem;
       }
     }
-    
   }
 
   .categories {    
@@ -124,8 +131,7 @@
 
     a {
       margin: 3px;
-      /* padding: 4px 10px 2px 10px; */
-      padding: 2px 8px;
+      padding: 1px 8px;
   
       background-color: var(--primary);
       color: var(--background);
