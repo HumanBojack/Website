@@ -1,48 +1,8 @@
 <script lang="ts">
-  import xss from 'xss';
-  import hljs from 'highlight.js';
-  import { marked } from 'marked';
-  import { footnotes } from '$lib/helpers/markedFootnotes';
-
   import "$lib/styles/blog.scss";
   
   export let data;
   const { Content, metadata } = data;
-  
-  // const readTime = getReadTime(Content);
-
-  // marked.setOptions({
-  //   highlight: (code, lang) => {
-  //     const language = hljs.getLanguage(lang) ? lang : 'plaintext';
-  //     const highlightedCode = hljs.highlight(code, { language }).value // need to add an hljs copy option
-  //     return highlightedCode;
-  //   }
-  // });
-  // marked.use({ renderer: footnotes });
-
-  // const headings = {
-  //   heading(text, level) {
-  //     const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
-
-  //     return `
-  //           <h${level}>
-  //             <a name="${escapedText}" class="anchor" href="#${escapedText}">
-  //               #</a>${"" + text}
-  //           </h${level}>`;
-  //   }
-  // }
-  // marked.use({ renderer: headings })
-
-  // We are not using xss yet since we have issue of it blocking our markdown (title id, checklist...)
-  // const content = xss(marked.parse(article.content), {
-  //   onIgnoreTagAttr: (tag, name, value, isWhiteAttr) => {
-  //     console.log(value);
-  //     if (value.slice(0, 9) == "language-" || value.slice(0, 4) == "hljs") {
-  //       return name + '="' + xss.escapeAttrValue(value) + '"';
-  //     }
-  //   }
-  // })
-
 </script>
 
 <svelte:head>
@@ -65,7 +25,6 @@
       <time datetime={metadata.date}>
         {new Date(metadata.date).toLocaleDateString("en-US", { year: "numeric", month: 'long', day: 'numeric' })}
       </time>
-      <!-- TODO: add the readTime to the +page.ts -->
       — a {metadata.readTime} minute{metadata.readTime > 1 ? "s" : ""} read
     </p>
     
@@ -77,7 +36,6 @@
 
   </div>
   <hr/>
-  
   
   <div class="article">
     <!-- <svelte:component this={Content} /> // A nice alternative -->
