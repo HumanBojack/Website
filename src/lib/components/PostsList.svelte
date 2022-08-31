@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let posts: { meta: { title: string, date: string, readTime: number, categories: string[], summary: string }, path: string }[];
+  export let posts: { meta: { title: string, date: string, readTime: number, categories: string[], subtitle: string }, path: string }[];
 </script>
 
 <div class="article_list">
@@ -10,7 +10,7 @@
         <p>{post.meta.readTime} minute{post.meta.readTime > 1 ? "s" : ""} read</p>
       </div>
       <h3>{post.meta.title}</h3>
-      <p>This is a brief summary of the article (which was great)</p>
+      <p>{post.meta.subtitle}</p>
 
     </a>
   {/each}

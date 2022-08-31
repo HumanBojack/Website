@@ -1,5 +1,6 @@
 ---
 title: my first article
+subtitle: Test article to check if everything works
 date: 2022-07-18
 categories:
 - "hello"

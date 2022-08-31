@@ -1,5 +1,6 @@
 ---
 title: This is the third (and a really long) article
+subtitle: A really long article meant to test paragraphs
 date: 2022-07-10
 categories:
 - this
