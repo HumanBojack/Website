@@ -19,7 +19,7 @@
 
   <div class="blog_posts">
     <h2>Last 3 blog posts</h2>
-    <PostsList posts="{posts.slice(-3)}" />
+    <PostsList posts="{posts.slice(0, 3)}" />
   </div>
 
   <!-- <div class="projects">
