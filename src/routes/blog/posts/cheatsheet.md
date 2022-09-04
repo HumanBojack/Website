@@ -1,6 +1,6 @@
 ---
 title: Markdown Cheatsheet
-subtitle: A showcase of markdown possibilities
+subtitle: A showcase of markdown's possibilities
 date: 2022-08-01
 categories:
 - tutorial
@@ -41,14 +41,14 @@ categories:
 
 And insert images like this \\/
 
-![This is an image](https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png)
+![This is an image](/images/blog/google-logo.png)
 *hey*
 
 
 And you can even do images with a link like this \\/
 
-[![this is an image](https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png)](https://google.com)
-<figcaption>A clickable google image</figcaption>
+[![this is an image](/images/blog/google-logo.png)](https://google.com)
+*A clickable google image*
 
 ***
 
@@ -66,23 +66,32 @@ Text can be striked through ~~like this~~
 - [ ] Use it
 - [ ] Then do another one
 
-```json
-{
-	"firstName": "Romain",
-	"lastName": "Spychala",
-	"age": 19
-}
-```
+```svelte
+<div class="presentation">
+	{#if metadata.hero}
+		<div class="hero">
+			<h1>{metadata.title}</h1>
+			<img src="/images/hero/{metadata.hero}" alt={metadata.hero_alt}/>
+		</div>
+	{:else}
+		<h1>{metadata.title}</h1>
+	{/if}
+	<h5>{metadata.subtitle}</h5>
+	<p>
+		<time datetime={metadata.date}>
+			{new Date(metadata.date).toLocaleDateString("en-US", { year: "numeric", month: 'long', day: 'numeric' })}
+		</time>
+		— a {metadata.readTime} minute{metadata.readTime > 1 ? "s" : ""} read
+	</p>
+	
+	<div class="categories">
+		{#each metadata.categories as category}
+			<a href="/blog?category={category}">{category}</a>
+		{/each}
+	</div>
 
+</div>
 ```
-hello   hello
-     yes
-ooooo
-.....
-```
-
-The quick brown fox jumps over the lazy dog
-#### The quick brown fox jumps over the lazy dog
 
 
 [^1]: An example of footer content
