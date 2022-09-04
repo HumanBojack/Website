@@ -1,5 +1,6 @@
 <script lang="ts">
   import "$lib/styles/blog.scss";
+  import "$lib/styles/prism.css";
   
   export let data;
   const { Content, metadata } = data;
@@ -21,7 +22,7 @@
     {:else}
       <h1>{metadata.title}</h1>
     {/if}
-    <h5>{metadata.subtitle}</h5>
+    <h2 class="h5">{metadata.subtitle}</h2>
     <p>
       <time datetime={metadata.date}>
         {new Date(metadata.date).toLocaleDateString("en-US", { year: "numeric", month: 'long', day: 'numeric' })}
@@ -106,7 +107,7 @@
       margin: 0;
       width: 100%;
 
-      color: $light;
+      color: #FDF5ED;
       text-align: center;
 
       background: rgb(0,0,0);

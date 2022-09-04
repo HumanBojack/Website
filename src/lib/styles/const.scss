@@ -8,15 +8,14 @@ $themes: (
     "neutral": #2C2A4A,     // Neutral 2
     "contrast": #CE7A12,    // Contrast (call to action)
     "muted": #535353d8,
-    "text": #303437,
-    "codeblock": #dbd4ce
+    "text": #303437
   ),
   "dark": (
-    "primary": #88d498,
-    "secondary": #db5375,
+    "primary": #B6465F,
+    "secondary": #78A1BB,
     "background": #303437,
-    "neutral": #fff,
-    "contrast": #fff,
+    "neutral": #2C2A4A,
+    "contrast": #CE7A12,
     "muted": #bdbdbd,
     "text": #FDF5ED
   )
@@ -28,9 +27,6 @@ $max-width-margin: $max-width + (2 * $margin);
 
 $article-max-width: 720px;
 $article-max-width-margin: $article-max-width + (2 * $margin);
-
-$light: #FDF5ED;
-
 
 @each $theme-name, $properties in $themes {
   .#{$theme-name} {
