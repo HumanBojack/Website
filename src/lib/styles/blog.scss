@@ -1,17 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,500');
 
-// pre code {
-//   font-family: 'IBM Plex Mono', sans-serif;
-
-//   display: block;
-//   padding: 1rem;
-
-//   background: #303030;
-//   color: #c5c8c6;
-
-//   overflow: scroll;
-// }
-
 strong {
   font-weight: normal;
   background-color: var(--highlight);
@@ -74,10 +62,6 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   filter: invert(86%) sepia(9%) saturate(173%) hue-rotate(350deg) brightness(108%) contrast(105%);
 }
 
-// .light .heading-link img {
-//   filter: invert(86%) sepia(9%) saturate(173%) hue-rotate(350deg) brightness(108%) contrast(105%);
-// }
-
 .external-link-icon {
   display: inline-flex;
   vertical-align: baseline;
@@ -89,6 +73,11 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 
 .light .external-link-icon img {
+  filter: brightness(0) saturate(100%) invert(56%) sepia(79%) saturate(2793%) hue-rotate(5deg) brightness(90%) contrast(86%);
+}
+
+.dark .external-link-icon img {
+  // Both values are the same, but the rules exist in case we have different color links in light and dark mode
   filter: brightness(0) saturate(100%) invert(56%) sepia(79%) saturate(2793%) hue-rotate(5deg) brightness(90%) contrast(86%);
 }
 
