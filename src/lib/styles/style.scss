@@ -1,5 +1,5 @@
-// @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,500');
-// @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Serif:400,500');
+// @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&family=IBM+Plex+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&family=IBM+Plex+Serif:wght@400;500&display=swap');
 
 body {
   margin: 0;
@@ -7,6 +7,10 @@ body {
   background: var(--background);;
   color: var(--text);
   transition: background-color 0.2s;
+
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  // font-smoothing: antialiased;
 }
 
 hr {
@@ -26,7 +30,7 @@ html {font-size: 112.5%;} /*18px*/
 
 body {
   font-family: 'IBM Plex Serif', sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.75;
 }
 
