@@ -8,6 +8,10 @@
   $: isMainPage = (data.currentRoute == "/")
 
 </script>
+<svelte:head>
+  <link rel="preload" href="fonts/IBMPlexSans-Medium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/IBMPlexSerif-Regular.woff2" as="font" type="font/woff2" crossorigin>
+</svelte:head>
 
 <Header />
 
