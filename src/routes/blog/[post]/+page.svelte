@@ -110,7 +110,6 @@
       color: #FDF5ED;
       text-align: center;
 
-      background: rgb(0,0,0);
       background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(48,52,55,0.38697485830269607) 50%, rgba(0,0,0,0) 100%);
     }
 
@@ -121,6 +120,8 @@
         right: 0;
         left: 0;
         margin-bottom: 1rem;
+        color: var(--text);
+        background: none;
       }
     }
   }
