@@ -131,6 +131,8 @@
     flex-wrap: wrap;
 
     a {
+      font-family: "IBM Plex Sans", sans-serif;
+
       margin: 3px;
       padding: 1px 8px;
   
