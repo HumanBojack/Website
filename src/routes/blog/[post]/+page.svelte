@@ -57,6 +57,7 @@
 
   .article {
     margin: 2rem auto;
+    font-size: 22px;
   }
 
   .presentation {
@@ -133,6 +134,7 @@
 
     a {
       font-family: "IBM Plex Sans", sans-serif;
+      font-weight: 500;
 
       margin: 3px;
       padding: 1px 8px;
