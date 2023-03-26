@@ -81,11 +81,6 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   filter: brightness(0) saturate(100%) invert(56%) sepia(79%) saturate(2793%) hue-rotate(5deg) brightness(90%) contrast(86%);
 }
 
-a {
-  color: var(--contrast);
-  text-decoration: none;
-}
-
 .contains-task-list {
   list-style: none;
   padding: 0;

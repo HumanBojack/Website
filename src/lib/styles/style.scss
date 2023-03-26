@@ -24,6 +24,10 @@ hr {
   visibility: hidden;
 }
 
+a {
+  color: var(--contrast);
+  text-decoration: none;
+}
 
 html {font-size: 112.5%;} /*18px*/
 
