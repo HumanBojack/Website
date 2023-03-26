@@ -6,13 +6,13 @@
   <img src="/images/romain.jpg" alt="Romain Spychala looking at the camera" />
 </div>
 <h2>Hello, this is Romain.</h2>
-<p>I'm a 20 years old french developer based in Lille.</p>
+<p>I'm a 21 years old developer based in Lille, France.</p>
 <p>
   Currently, I'm doing work-study, working at Genfit as an AI developer and studying at Simplon.
   My mid-term goal is to improve in backend web development.
 </p>
 <div>
-  <p>My socials (feel free to contact me!):</p>
+  <p>Contact me on my socials:</p>
   <div class="socials">
 
     <a href="https://github.com/HumanBojack">
