@@ -18,7 +18,7 @@
 <style lang="scss">
 
   header {
-    grid-column: 1/-1;
+    height: $header-height;
     padding: 0.75rem;
     background: var(--primary);
     color: var(--background);
@@ -28,6 +28,10 @@
 
     font-family: 'IBM Plex Sans', sans-serif;
     line-height: 1.3;
+  }
+  
+  nav {
+    margin: auto 0;
   }
 
   ul {
@@ -45,6 +49,6 @@
   a {
     text-decoration: none;
     color: inherit;
-    margin:auto 0;
+    margin: auto 0;
   }
 </style>
