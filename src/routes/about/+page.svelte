@@ -1,3 +1,7 @@
+<script lang="ts">
+  import { calculateAge } from "$lib/helpers/calculateAge";
+</script>
+
 <svelte:head>
   <title>About</title>
 </svelte:head>
@@ -11,9 +15,8 @@
     <div class="presentation">
       <h2>Who I am</h2>
       <div>
-        <!-- TODO: Auto-calculate my age -->
         <p>
-          Hi, I'm Romain Spychala. I'm a 21 years old developer, and I like to learn new things.
+          Hi, I'm Romain Spychala. I'm a {calculateAge("11/20/2001")} years old developer, and I like to learn new things.
         </p>
         <p>
           I'm currently working at Genfit, a biotech company in Lille.

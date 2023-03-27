@@ -1,12 +1,12 @@
 <script>
-
+  import { calculateAge } from "$lib/helpers/calculateAge";
 </script>
 
 <div class="image_frame">
   <img src="/images/romain.jpg" alt="Romain Spychala looking at the camera" />
 </div>
 <h2>Hello, this is Romain.</h2>
-<p>I'm a 21 years old developer based in Lille, France.</p>
+<p>I'm a {calculateAge("11/20/2001")} years old developer based in Lille, France.</p>
 <p>
   Currently, I'm doing work-study, working at Genfit as an AI developer and studying at Simplon.
   My mid-term goal is to improve in backend web development.
