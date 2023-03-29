@@ -1,6 +1,10 @@
 <script lang="ts">
   import { calculateAge } from "$lib/helpers/calculateAge";
+
+  let y: number;
 </script>
+
+<svelte:window bind:scrollY={y}/>
 
 <svelte:head>
   <title>About</title>
@@ -9,9 +13,14 @@
 <div class="main_wrapper">
   <div class="hero">
     <h1>About me</h1>
+    <a href="#content" class="scroll-icon" style="opacity: {1 - Math.max(0, y / 100)}">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+        <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+      </svg>
+    </a>
   </div>
 
-  <div class="container">
+  <div class="container" id="content">
     <div class="presentation">
       <h2>Who I am</h2>
       <div>
@@ -58,7 +67,6 @@
 </div>
 
 <style lang="scss">
-
   .main_wrapper {
     max-width: $max-width;
     margin: 0 auto;
@@ -79,6 +87,25 @@
       text-align: center;
     }
 
+    .scroll-icon {
+      color: var(--text-color);
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      animation: up-and-down 2s ease-in-out infinite;
+      
+      svg {
+        width: 2em;
+        height: 2em;
+      }
+    }
+  }
+
+  @keyframes up-and-down {
+    0% { bottom: 5%; }
+    50% { bottom: 7%; }
+    100% { bottom: 5%; }
   }
 
   .container {
