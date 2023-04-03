@@ -58,6 +58,19 @@
       </div>
     </div>
 
+    <div class="path-fig">
+      <div class="image-frame">
+        <img class="uni-rouen" alt="Université de Rouen Normandie, logo"/>
+      </div>
+
+      <div class="image-frame">
+        <img class="thp" alt="The Hacking Project, logo"/>
+      </div>
+
+      <div class="image-frame">
+        <img class="simplon" alt="Simplon.co, logo"/>
+      </div>
+    </div>
 
     <div class="hobbies">
       <h2>What I like</h2>
@@ -135,6 +148,10 @@
     .path {
       grid-area: 2 / 2 / span 1 / span 1;
     }
+
+    .path-fig {
+      grid-area: 2 / 1 / span 1 / span 1;
+    }
     
     .hobbies {
       grid-area: 3 / 1 / span 1 / span 1;
@@ -148,9 +165,99 @@
       grid-template-columns: 1fr;
       grid-template-rows: auto;
 
-      .presentation, .path, .hobbies, .skills {
+      .presentation, .path, .hobbies, .skills, .presentation-fig, .path-fig {
         grid-area: auto;
       }
+    }
+  }
+
+  .image-frame {
+    overflow: hidden;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .path-fig {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .image-frame {
+      width: 60%;
+    }
+
+    div {
+      border-top: 3px solid;
+      border-image: linear-gradient(to right, var(--primary) 0%, var(--secondary) 100%);
+      border-image-slice: 1;
+      border-width: 3px;
+      margin: 0;
+      padding: 40px;
+      position: relative;
+    }
+
+    //odd number borders
+    div:nth-child(odd) {
+      border-right: 3px solid;
+      padding-left: 0;
+      
+      &:before {
+        left: 100%; 
+        margin-left: -20px;
+      }
+    }
+
+    //even number borders
+    div:nth-child(even) {
+      border-left: 3px solid;
+      padding-right: 0;
+      
+      &:before {
+        right: 100%; 
+        margin-right: -20px;
+      }
+    }
+
+    //handle first and last
+    div:first-child {
+      border-top: 0;
+      border-top-right-radius:0;
+      border-top-left-radius:0;
+    }
+    div:last-child {
+      border-bottom-right-radius:0;
+      border-bottom-left-radius:0;
+    }
+  }
+
+  /* Display the correct images based on the theme */
+  .light .image-frame {
+    .uni-rouen {
+      content: url("/images/about/univ_rouen_logo.png")
+    }
+
+    .thp {
+      content: url("/images/about/THP_logo.png")
+    }
+
+    .simplon {
+      content: url("/images/about/simplon_logo.png")
+    }
+  }
+
+  .dark .image-frame {
+    .uni-rouen {
+      content: url("/images/about/univ_rouen_dark_logo.png")
+    }
+
+    .thp {
+      content: url("/images/about/THP_dark_logo.png")
+    }
+
+    .simplon {
+      content: url("/images/about/simplon_dark_logo.png")
     }
   }
 </style>
