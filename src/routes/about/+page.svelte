@@ -34,6 +34,10 @@
       </div>
     </div>
 
+    <div class="presentation-fig image-frame">
+      <img src="/images/romain.jpg" alt="Me" />
+    </div>
+
     <div class="path">
       <h2>What I did</h2>
       <div>
@@ -121,6 +125,11 @@
     
     .presentation {
       grid-area: 1 / 1 / span 1 / span 1;
+    }
+
+    .presentation-fig {
+      grid-area: 1 / 2 / span 1 / span 1;
+      aspect-ratio: 1 / 1;
     }
 
     .path {
