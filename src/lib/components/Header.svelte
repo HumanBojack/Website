@@ -47,6 +47,7 @@
   }
 
   a {
+    font-weight: 500;
     text-decoration: none;
     color: inherit;
     margin: auto 0;
