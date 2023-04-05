@@ -89,7 +89,7 @@
     margin: 0 auto;
 
     @media (max-width: $max-width-margin) {
-      margin: 2rem $margin;
+      margin: 0 $margin;
     }
   }
   
@@ -100,7 +100,7 @@
     align-items: center;
 
     h1 {
-      font-size: 8rem;
+      font-size: clamp(4rem, 10vw, 8rem);
       text-align: center;
     }
 
