@@ -59,15 +59,15 @@
     </div>
 
     <div class="path-fig">
-      <div class="image-frame">
+      <div class="image-frame" data-year="2020">
         <img class="uni-rouen" alt="Université de Rouen Normandie, logo"/>
       </div>
 
-      <div class="image-frame">
+      <div class="image-frame" data-year="2021">
         <img class="thp" alt="The Hacking Project, logo"/>
       </div>
 
-      <div class="image-frame">
+      <div class="image-frame" data-year="2022-2023">
         <img class="simplon" alt="Simplon.co, logo"/>
       </div>
     </div>
@@ -196,6 +196,20 @@
       margin: 0;
       padding: 40px;
       position: relative;
+      overflow: visible;
+
+      &:before {
+        content: attr(data-year);
+        position: absolute;
+        color: var(--primary);
+        font-size: 1.2em;
+        font-weight: 500;
+
+        writing-mode: vertical-lr;
+        height: 100%;
+        text-align: center;
+        top: 0;
+      }
     }
 
     //odd number borders
@@ -204,8 +218,7 @@
       padding-left: 0;
       
       &:before {
-        left: 100%; 
-        margin-left: -20px;
+        left: 100%;
       }
     }
 
@@ -216,7 +229,7 @@
       
       &:before {
         right: 100%; 
-        margin-right: -20px;
+        transform: rotate(180deg);
       }
     }
 
