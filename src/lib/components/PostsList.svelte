@@ -32,7 +32,11 @@
 
       * {
         margin: 5px 0;
-      }      
+      }
+
+      &:hover h3 {
+       color: var(--contrast);
+      }
     }
   }
 
