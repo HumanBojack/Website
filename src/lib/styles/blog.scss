@@ -43,14 +43,14 @@ img + em {
       margin-left: 0.25em;
       opacity: 0;
 
-      &:hover {
-        opacity: 1;
-      }
-
       svg {
         fill: var(--text);
         height: .6em;
       }
+    }
+
+    &:hover > a {
+      opacity: 1;
     }
   }
 }
