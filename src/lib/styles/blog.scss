@@ -56,22 +56,8 @@ img + em {
 }
 
 .external-link-icon {
-  display: inline-flex;
-  vertical-align: baseline;
-
-  img {
-    height: 1rem;
-    width: 1rem;
-  }
-}
-
-.light .external-link-icon img {
-  filter: brightness(0) saturate(100%) invert(56%) sepia(79%) saturate(2793%) hue-rotate(5deg) brightness(90%) contrast(86%);
-}
-
-.dark .external-link-icon img {
-  // Both values are the same, but the rules exist in case we have different color links in light and dark mode
-  filter: brightness(0) saturate(100%) invert(56%) sepia(79%) saturate(2793%) hue-rotate(5deg) brightness(90%) contrast(86%);
+  height: 1em;
+  stroke: var(--contrast)
 }
 
 .contains-task-list {
