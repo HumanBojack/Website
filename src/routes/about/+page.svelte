@@ -98,6 +98,33 @@
 
     <div class="skills">
       <h2>What I do</h2>
+      <p>
+        The skills I picked up during my studies and personal projects are various.
+        Rather than listing them all, I'll just list the ones I'm most proud of.
+      </p>
+      
+      <h3>Programming languages</h3>    
+      <p>
+        The languages I have the most knowledge on are:
+        Ruby, Javascript, Python and Golang. The 3 last ones are the ones I still use regularly.
+      </p>
+
+      <h3>Frameworks</h3>
+      <p>
+        The frameworks I've used the most are: Ruby on Rails, React, Svelte, FastAPI and Gin.
+      </p>
+
+      <h3>Collaborative work</h3>
+      <p>
+        I understand the Agile mindset and I know how to apply it. I've noticed the difference it makes in terms of productivity and quality of work.
+        I especially like to work with people that understand the importance of good communication and don't think of Agile as a burden.
+      </p>
+
+      <h3>Other</h3>
+      <p>
+        I know how to use Docker, Git and Linux pretty well. I have enough knowledge of AWS, Azure, Bash, SQL and NoSQL to use them in a project.
+      </p>
+
     </div>
   </div>
 
