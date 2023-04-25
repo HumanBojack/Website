@@ -181,7 +181,8 @@
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;
     grid-column-gap: 20px;
-    grid-row-gap: 20px;
+    grid-row-gap: 100px;
+    align-items: center;
 
     h2 {
       text-align: center;
