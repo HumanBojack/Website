@@ -74,6 +74,26 @@
 
     <div class="hobbies">
       <h2>What I like</h2>
+      <p>
+        I really like to learn new things and to experiment, so my hobbies change a lot. Some things stick with me though. Here are some of the things I've done in the past:
+      </p>
+      <ul>
+        <li>Playing the piano and learning music theory</li>
+        <li>Solving a rubik's cube in 20 seconds, and solving similar, harder, puzzles</li>
+        <li>Learning Chess (I'm still terrible however)</li>
+        <li>Speedrunning games (Out There Somewhere, a bit of Minecraft)</li>
+        <li>Diving into the world of typography and weird symbols</li>
+        <li>Digging into the custom keyboard rabbit hole and building some</li>
+        <li>Re-taking the habit of reading like I used to</li>
+        <li>Learning different keyboards layouts (qwerty, colemak dh)</li>
+      </ul>
+      <p>
+        Currently, I spend my free time reading about typography, watching videos and riding my bike on saturdays.
+      </p>
+    </div>
+
+    <div class="hobbies-fig image-frame">
+      <img src="/images/about/keyboard.jpg" alt="Keyboard" />
     </div>
 
     <div class="skills">
@@ -90,6 +110,10 @@
 
     @media (max-width: $max-width-margin) {
       margin: 0 $margin;
+
+      .hobbies-fig img {
+        width: 100%;
+      }
     }
   }
   
@@ -177,6 +201,12 @@
     img {
       width: 100%;
     }
+  }
+
+  .hobbies-fig img {
+    width: 60%;
+    display: block;
+    margin: 0 auto;
   }
 
   .path-fig {
