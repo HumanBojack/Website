@@ -227,6 +227,7 @@
     overflow: hidden;
 
     img {
+      display: block;
       width: 100%;
     }
   }
