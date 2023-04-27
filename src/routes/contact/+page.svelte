@@ -44,7 +44,6 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
 
     @media (max-width: $max-width-margin) {
       margin: 0 $margin;
@@ -55,6 +54,9 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 3rem 2rem;
+
+    margin: auto 0;
+    padding: 10px 0;
   }
 
   .contact-box {
