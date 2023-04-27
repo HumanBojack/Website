@@ -3,7 +3,7 @@
 </script>
 
 <header class="title">
-  <a href="/">Home</a>
+  <a href="/">🧑🏻‍💻</a>
 
   <nav>
     <ul>
