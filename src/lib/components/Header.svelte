@@ -19,7 +19,7 @@
 
   header {
     height: $header-height;
-    padding: 0.75rem;
+    padding: $header-padding;
     background: var(--primary);
     color: var(--background);
     display: flex;

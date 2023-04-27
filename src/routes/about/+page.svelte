@@ -145,7 +145,7 @@
   }
   
   .hero {
-    height: calc(100vh - ($header-height + 1.5rem));
+    height: calc(100vh - ($header-height + 2 * $header-padding));
     display: flex;
     justify-content: center;
     align-items: center;
