@@ -1,6 +1,9 @@
 <script lang="ts">
   import "$lib/styles/blog.scss";
   import "$lib/styles/prism.css";
+  import { page } from '$app/stores';
+
+  let baseUrl = $page.url.origin;
   
   export let data;
   const { Content, metadata } = data;
@@ -8,7 +11,24 @@
 
 <svelte:head>
   <title>{metadata.title} - Romain</title>
+  
+  <!-- OpenGraph metadata -->
   <meta property="og:title" content={metadata.title} />
+  <meta property="og:description" content={metadata.subtitle} />
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content={metadata.date} />
+
+  <!-- Use the hero image or a default one -->
+  {#if metadata.hero}
+  <meta property="og:image" content={baseUrl + "/images/hero/{metadata.hero}"} />
+  <meta property="og:image:alt" content={metadata.hero_alt} />
+  {:else}
+  <meta property="og:image" content={baseUrl+ "/images/hero/default2.png"} />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:alt" content="Main page of the website" />
+  {/if}
+
 </svelte:head>
 
 <div class="main_wrapper">
@@ -78,10 +98,6 @@
 
     h1 {
       text-align: center;
-    }
-
-    h5 {
-      color: var(--text);
     }
   }
 
