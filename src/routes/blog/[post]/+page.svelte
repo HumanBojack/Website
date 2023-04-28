@@ -23,7 +23,7 @@
   <meta property="og:image" content={baseUrl + "/images/hero/{metadata.hero}"} />
   <meta property="og:image:alt" content={metadata.hero_alt} />
   {:else}
-  <meta property="og:image" content={baseUrl+ "/images/hero/default2.png"} />
+  <meta property="og:image" content={baseUrl+ "/images/hero/default.png"} />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:alt" content="Main page of the website" />
