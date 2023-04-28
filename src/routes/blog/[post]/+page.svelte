@@ -12,11 +12,12 @@
 <svelte:head>
   <title>{metadata.title} - Romain</title>
   
-  <!-- OpenGraph metadata -->
+  <!-- OpenGraph and twitter metadata -->
   <meta property="og:title" content={metadata.title} />
   <meta property="og:description" content={metadata.subtitle} />
   <meta property="og:type" content="article" />
   <meta property="og:article:published_time" content={metadata.date} />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Use the hero image or a default one -->
   {#if metadata.hero}
