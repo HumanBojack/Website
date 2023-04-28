@@ -16,7 +16,7 @@
   <meta property="og:title" content={metadata.title} />
   <meta property="og:description" content={metadata.subtitle} />
   <meta property="og:type" content="article" />
-  <meta property="article:published_time" content={metadata.date} />
+  <meta property="og:article:published_time" content={metadata.date} />
 
   <!-- Use the hero image or a default one -->
   {#if metadata.hero}
