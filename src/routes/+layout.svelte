@@ -22,14 +22,3 @@
 {/key}
 
 <!-- <footer>This is a magnificient footer</footer> -->
-
-<style>
-  /* main {
-    grid-column: 3 / span 5;
-  }
-  
-  .isMainPage {
-    grid-column: 1/-1;
-  } */
-</style>
-
