@@ -21,7 +21,7 @@
 
   <!-- Use the hero image or a default one -->
   {#if metadata.hero}
-  <meta property="og:image" content={baseUrl + "/images/hero/{metadata.hero}"} />
+  <meta property="og:image" content="{baseUrl}/images/hero/{metadata.hero}" />
   <meta property="og:image:alt" content={metadata.hero_alt} />
   {:else}
   <meta property="og:image" content={baseUrl+ "/images/hero/default.png"} />
