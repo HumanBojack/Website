@@ -6,7 +6,7 @@
   {#each posts as post}
     <a href="/blog/{post.name}">
       <div class="metadata">
-        <p>{new Date(post.meta.date).toLocaleDateString()}</p>
+        <p>{new Date(post.meta.date).toLocaleDateString("es-pa")}</p>
         <p>{post.meta.readTime} minute{post.meta.readTime > 1 ? "s" : ""} read</p>
       </div>
       <h3>{post.meta.title}</h3>
