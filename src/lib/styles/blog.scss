@@ -2,7 +2,8 @@
 
 strong {
   font-weight: inherit;
-  background-color: var(--highlight);
+  background-color: var(--contrast);
+  color: var(--background);
 }
 
 img {
