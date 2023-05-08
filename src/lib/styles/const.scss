@@ -36,12 +36,11 @@ $header-padding: 0.75rem;
     // define a css variable for each property
     @each $name, $property in $properties {
       --#{$name}: #{$property};
+      --#{$name}-light: #{color.scale($property, $alpha: -60%)};
 
       @if ($name == "primary") {
         --#{$name}-dark: #{color.scale($property, $lightness: -10%)};
         --#{$name}-darker: #{color.scale($property, $lightness: -20%)};
-
-        --highlight: #{color.scale($property, $alpha: -60%)};
       }
     }
   }
