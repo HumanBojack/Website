@@ -153,6 +153,7 @@
     h1 {
       font-size: clamp(4rem, 10vw, 8rem);
       text-align: center;
+      margin: 0;
     }
 
     .scroll-icon {
