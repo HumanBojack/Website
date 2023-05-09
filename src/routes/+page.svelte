@@ -1,5 +1,5 @@
 <script lang="ts">
-
+  import OpenGraph from "$lib/components/OpenGraph.svelte";
   import Presentation from "$lib/components/Presentation.svelte"; 
   import PostsList from "$lib/components/PostsList.svelte";
 
@@ -11,6 +11,8 @@
 <svelte:head>
   <title>Romain Spychala</title>
 </svelte:head>
+
+<OpenGraph title="Romain Spychala" description="Learn more about Romain Spychala and read his articles"/>
 
 <div class="main_wrapper">
   <div class="presentation">
