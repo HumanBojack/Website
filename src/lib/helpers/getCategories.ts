@@ -1,6 +1,6 @@
 import { alphabetical, usage } from "./sortCategories";
 
-export const getCategories = (posts: object[], selected=[]: string[]) => {
+export const getCategories = (posts: object[], selected: string[] = []) => {
   const categories = posts.reduce((previousPosts: object[], post: object) => {
     
     post.meta.categories.forEach((category: string) => {
