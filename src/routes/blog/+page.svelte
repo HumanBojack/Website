@@ -11,6 +11,7 @@
   import { page } from '$app/stores';
 
   import PostsList from "$lib/components/PostsList.svelte";
+  import OpenGraph from "$lib/components/OpenGraph.svelte";
 
   export let data;
 
@@ -60,6 +61,8 @@
 <svelte:head>
   <title>Blog posts</title>
 </svelte:head>
+
+<OpenGraph title="Blog posts" description="List of all articles on the website"/>
 
 <div class="main_wrapper">
   <div class="category_filter">

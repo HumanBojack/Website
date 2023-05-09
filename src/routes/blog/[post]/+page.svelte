@@ -1,9 +1,7 @@
 <script lang="ts">
+  import OpenGraph from '$lib/components/OpenGraph.svelte'; 
   import "$lib/styles/blog.scss";
   import "$lib/styles/prism.css";
-  import { page } from '$app/stores';
-
-  let baseUrl = $page.url.origin;
   
   export let data;
   const { Content, metadata } = data;
@@ -11,26 +9,9 @@
 
 <svelte:head>
   <title>{metadata.title} - Romain</title>
-  
-  <!-- OpenGraph and twitter metadata -->
-  <meta property="og:title" content={metadata.title} />
-  <meta property="og:description" content={metadata.subtitle} />
-  <meta property="og:type" content="article" />
-  <meta property="og:article:published_time" content={metadata.date} />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <!-- Use the hero image or a default one -->
-  {#if metadata.hero}
-  <meta property="og:image" content="{baseUrl}/images/hero/{metadata.hero}" />
-  <meta property="og:image:alt" content={metadata.hero_alt} />
-  {:else}
-  <meta property="og:image" content={baseUrl+ "/images/hero/default.png"} />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:alt" content="Main page of the website" />
-  {/if}
-
 </svelte:head>
+
+<OpenGraph title="{metadata.title} - Romain" description={metadata.subtitle} type="article" publishedTime={metadata.time} image={metadata.hero} imageAlt={metadata.hero_alt} />
 
 <div class="main_wrapper">
   

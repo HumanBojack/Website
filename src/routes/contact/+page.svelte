@@ -1,6 +1,12 @@
+<script>
+  import OpenGraph from "$lib/components/OpenGraph.svelte";
+</script>
+
 <svelte:head>
   <title>Socials</title>
 </svelte:head>
+
+<OpenGraph title="Socials" description="How to contact me" />
 
 <div class="main-wrapper">
   <div class="socials">

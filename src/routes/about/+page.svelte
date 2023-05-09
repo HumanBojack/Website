@@ -1,4 +1,5 @@
 <script lang="ts">
+  import OpenGraph from '$lib/components/OpenGraph.svelte'; 
   import { calculateAge } from "$lib/helpers/calculateAge";
 
   let y: number;
@@ -9,6 +10,8 @@
 <svelte:head>
   <title>About</title>
 </svelte:head>
+
+<OpenGraph title="About" description="Who I am" />
 
 <div class="main_wrapper">
   <div class="hero">
