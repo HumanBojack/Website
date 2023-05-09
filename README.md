@@ -1,5 +1,9 @@
-This project is still under devlopment, as for this readme.
+# Website
+This is my website, made with [svelte](https://svelte.dev) and [sveltekit](https://kit.svelte.dev). It is hosted on [vercel](https://vercel.com).
 
-This website is being built using **svelte** and **sveltekit**. I will be hosting it on either vercel or netlify (but probably vercel).
+You can find it at [spyr.dev](https://spyr.dev).
 
-Come back later for more informations! Also, not everything has been commited nor pushed, so I don't think you can run it yet (but why would you?).
+# Development
+You can find more informations about the development of this website and the reasons of some choices in [my first article](https://spyr.dev/blog/hello) (also available on the [github](/src/routes/blog/posts/hello.md)).
+
+You can install the dependencies with `npm install` and run the dev server with `npm run dev`.
