@@ -3,10 +3,9 @@
   import '$lib/styles/style.scss';
   import Header from '$lib/components/Header.svelte';
   import { fade } from 'svelte/transition';
+  import { page } from '$app/stores';
 
-  export let data;
-  $: isMainPage = (data.currentRoute == "/")
-
+  $: url = $page.url;
 </script>
 
 <svelte:head>
@@ -15,8 +14,8 @@
 
 <Header />
 
-{#key data.currentRoute}
-  <main in:fade={{ duration: 300 }} class:isMainPage>
+{#key url.pathname}
+  <main in:fade={{ duration: 100 }}>
     <slot />
   </main>
 {/key}
