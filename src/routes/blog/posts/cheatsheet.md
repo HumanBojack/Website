@@ -1,9 +1,10 @@
 ---
 title: Markdown Cheatsheet
 subtitle: A showcase of markdown's possibilities
-date: 2022-08-01
+date: 2023-04-01
 categories:
-- tutorial
+- demo
+- markdown
 ---
 
 # This is a level 1 title
