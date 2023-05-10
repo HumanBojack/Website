@@ -54,6 +54,11 @@ img + em {
       opacity: 1;
     }
   }
+
+  a {
+    word-wrap: break-word;
+    word-break: break-word;
+  }
 }
 
 .external-link-icon {
