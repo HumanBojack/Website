@@ -5,6 +5,7 @@
 
   export let data;
   const { posts }: { meta: { title: string, date: string }, path: string }[] = data;
+  let postList = posts.slice(0, 3);
 
 </script>
 
@@ -20,8 +21,8 @@
   </div>
 
   <div class="blog_posts">
-    <h2>Last 3 blog posts</h2>
-    <PostsList posts="{posts.slice(0, 3)}" />
+    <h2>Last {postList.length} blog posts</h2>
+    <PostsList posts={postList} />
   </div>
 
   <!-- <div class="projects">
