@@ -60,6 +60,7 @@
 
 <svelte:head>
   <title>Blog posts</title>
+  <meta name="robots" content="noindex" />
 </svelte:head>
 
 <OpenGraph title="Blog posts" description="List of all articles on the website"/>
