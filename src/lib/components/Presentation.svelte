@@ -8,8 +8,8 @@
 <h2>Hello, this is Romain.</h2>
 <p>I'm a {calculateAge("11/20/2001")} years old developer based in Lille, France.</p>
 <p>
-  Currently, I'm doing work-study, working at Genfit as an AI developer and studying at Simplon.
-  My mid-term goal is to improve in backend web development.
+  Currently, I'm doing work-study, working at Mathflow as a backend developer and studying at Epitech.
+  My current goal is to improve in backend web development and devops.
 </p>
 <div>
   <p>Contact me on my socials:</p>
