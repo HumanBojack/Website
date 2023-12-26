@@ -8,7 +8,7 @@ export const GET = async () => {
   const allPosts = await Promise.all(
     iterablePostFiles.map(async ([path, resolver]) => {
       const { metadata } = await resolver();
-      const name = path.match(/\/(\w+)\.md/)[1];
+      const name = path.match(/\/([\w-]+)\.md/)[1];
 
       return {
         meta: metadata,
