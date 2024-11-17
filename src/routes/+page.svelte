@@ -1,44 +1,46 @@
 <script lang="ts">
   import OpenGraph from "$lib/components/OpenGraph.svelte";
-  import Presentation from "$lib/components/Presentation.svelte"; 
+  import Presentation from "$lib/components/Presentation.svelte";
   import PostsList from "$lib/components/PostsList.svelte";
 
-  export let data;
-  const { posts }: { meta: { title: string, date: string }, path: string }[] = data;
+  let { data } = $props();
+  let { posts } = data;
+
   let postList = posts.slice(0, 3);
 
 </script>
 
 <svelte:head>
-  <title>Romain Spychala</title>
+	<title>Romain Spychala</title>
 </svelte:head>
 
-<OpenGraph title="Romain Spychala" description="Learn more about Romain Spychala and read his articles"/>
+<OpenGraph
+	title="Romain Spychala"
+	description="Learn more about Romain Spychala and read his articles"
+/>
 
 <div class="main_wrapper">
-  <div class="presentation">
-    <Presentation />
-  </div>
+	<div class="presentation">
+		<Presentation />
+	</div>
 
-  <div class="blog_posts">
-    <h2>Last {postList.length} blog posts</h2>
-    <PostsList posts={postList} />
-  </div>
+	<div class="blog_posts">
+		<h2>Last {postList.length} blog posts</h2>
+		<PostsList posts={postList} />
+	</div>
 
-  <!-- <div class="projects">
+	<!-- <div class="projects">
     <h2>Last 3 projects</h2>
     <PostsList {posts} />
   </div> -->
-
 </div>
-
 
 <style lang="scss">
 
   .main_wrapper {
     max-width: $max-width;
     margin: 2rem auto;
-    
+
     @media (max-width: $max-width-margin) {
       margin: 2rem $margin;
 
@@ -47,7 +49,7 @@
       }
     }
   }
-  
+
   @media (min-width: 768px) {
     .main_wrapper {
       display: grid;

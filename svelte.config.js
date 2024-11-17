@@ -1,5 +1,5 @@
-import adapter from '@sveltejs/adapter-auto';
-import preprocess from 'svelte-preprocess';
+import adapter from '@sveltejs/adapter-node';
+import { sveltePreprocess } from 'svelte-preprocess';
 
 import { mdsvex } from 'mdsvex';
 import mdsvexConfig from './mdsvex.config.js';
@@ -11,12 +11,11 @@ const config = {
 	extensions: ['.svelte', '.md'],
 	// https://svelte.dev/docs#compile-time-svelte-preprocess
 	preprocess: [
-		preprocess({
-			scss: { prependData: '@import "src/lib/styles/const.scss";'}
+		sveltePreprocess({
+			scss: { prependData: '@import "src/lib/styles/const.scss";' }
 		}),
 		mdsvex(mdsvexConfig)
 	],
-
 
 	kit: {
 		adapter: adapter()

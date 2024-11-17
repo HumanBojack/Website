@@ -13,10 +13,10 @@
   import PostsList from "$lib/components/PostsList.svelte";
   import OpenGraph from "$lib/components/OpenGraph.svelte";
 
-  export let data;
 
-  // export let posts: { meta: { title: string, date: string }, path: string }[];
-  let { posts, categories } = data;
+  let { data } = $props();
+  let posts = $state(data.posts);
+  let categories = $state(data.categories);
 
   const [send, receive] = crossfade({
 		fallback(node, params) {
@@ -37,82 +37,87 @@
 
   const toggleCategory = (category) => {
     category.selected = !category.selected;
-    categories = categories;
   }
 
   const resetSearch = () => {
     categories.forEach((cat) => cat.selected = false);
-    categories = categories;
   }
 
 
-  $:selectedCategories = categories.filter((elm) => elm.selected).map((elm) => elm.name);
-  $:filteredPosts = posts.filter((post) => selectedCategories.every((elm) => post.meta.categories.includes(elm)));
+  const selectedCategories = $derived(
+    categories.filter((elm) => elm.selected).map((elm) => elm.name)
+  );
 
-  $:postCount = getCategories(filteredPosts).reduce((previous, elm) => {
-    return {
-      ...previous,
-      [elm.name]: elm.articles.length
-    }
-  }, {});
+  const filteredPosts = $derived(
+    posts.filter((post) => selectedCategories.every((elm) => post.meta.categories.includes(elm)))
+  );
+
+  const postCount = $derived(
+    getCategories(filteredPosts).reduce((previous, elm) => {
+      return {
+        ...previous,
+        [elm.name]: elm.articles.length
+      }
+    }, {})
+  );
 
 </script>
 
 <svelte:head>
-  <title>Blog posts</title>
-  <meta name="robots" content="noindex" />
+	<title>Blog posts</title>
+	<meta name="robots" content="noindex" />
 </svelte:head>
 
-<OpenGraph title="Blog posts" description="List of all articles on the website"/>
+<OpenGraph title="Blog posts" description="List of all articles on the website" />
 
 <div class="main_wrapper">
-  <div class="category_filter">
+	<div class="category_filter">
+		<div class="actions" class:invisible={!selectedCategories.length}>
+			<button
+				onclick={(e) =>
+					copy(e, $page.url.host + '/blog/' + composeCategoryParams(selectedCategories))}
+				>Copy</button
+			>
+			<button onclick={resetSearch}>Reset</button>
+		</div>
 
-    <div class="actions" class:invisible={!selectedCategories.length}>
-      <button on:click={(e) => copy(e, $page.url.host + "/blog/" + composeCategoryParams(selectedCategories))}
-        >Copy</button>
-      <button on:click={resetSearch}>Reset</button>
-    </div>
+		<hr />
 
-    <hr/>
-
-    <div class="categories">
-      {#each categories
-        .filter(elm => postCount[elm.name])
-        .sort((a, b) => b.selected - a.selected)
-        as category (category.name)}
-        <!-- get the categories that have at least a post, display the selected categories first -->
-        <span
-          on:click="{() => toggleCategory(category)}"
-          animate:flip
-          class:selected={category.selected}
-          >
-          <!-- in:receive={{key: category.name}}
+		<div class="categories">
+			{#each categories
+				.filter((elm) => postCount[elm.name])
+				.sort((a, b) => b.selected - a.selected) as category (category.name)}
+				<!-- get the categories that have at least a post, display the selected categories first -->
+				<span
+					onclick={() => toggleCategory(category)}
+					animate:flip
+					class:selected={category.selected}
+				>
+					<!-- in:receive={{key: category.name}}
           out:send={{key: category.name}} -->
-          <!-- class:active={postCount[category.name]} -->
-          {category.name}
-          ({postCount[category.name]})
-        </span>
-      {/each}
-    </div>
+					<!-- class:active={postCount[category.name]} -->
+					{category.name}
+					({postCount[category.name]})
+				</span>
+			{/each}
+		</div>
+	</div>
 
-  </div>
-  
-  <div class="blog_posts">
-    <h1>{filteredPosts.length} post{filteredPosts.length == 1 ? "" : "s"}</h1>
-    <PostsList posts={filteredPosts} />
-  </div>
+	<div class="blog_posts">
+		<h1>{filteredPosts.length} post{filteredPosts.length == 1 ? '' : 's'}</h1>
+		<PostsList posts={filteredPosts} />
+	</div>
 </div>
 
 <style lang="scss">
   .main_wrapper {
     max-width: $max-width;
     margin: 8% auto;
-    
+
     display: grid;
     gap: 4rem;
   }
-  
+
   @media (min-width: 768px) {
     .main_wrapper {
       grid-template-columns: 1fr 3fr;
@@ -132,7 +137,7 @@
     align-items: center;
   }
 
-  
+
   .actions {
     display: flex;
 
@@ -144,14 +149,14 @@
       margin: 0 3px;
     }
   }
-  
-  
-  .categories {    
+
+
+  .categories {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
   }
-  
+
   span {
     margin: 3px;
     // padding: 4px 10px 2px 10px
@@ -160,9 +165,9 @@
     background-color: var(--primary);
     color: var(--background);
     text-transform: capitalize;
-    
+
     border-radius: 15px;
-    
+
     cursor: pointer;
 
     font-family: "IBM Plex Sans", sans-serif;
@@ -171,5 +176,5 @@
       background-color: var(--secondary);
     }
   }
-  
+
 </style>

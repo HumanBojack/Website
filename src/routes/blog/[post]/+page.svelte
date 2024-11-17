@@ -1,50 +1,59 @@
 <script lang="ts">
-  import OpenGraph from '$lib/components/OpenGraph.svelte'; 
+  import OpenGraph from '$lib/components/OpenGraph.svelte';
   import "$lib/styles/blog.scss";
   import "$lib/styles/prism.css";
-  
-  export let data;
-  const { Content, metadata } = data;
+
+  let {data} = $props();
+  let {Content, metadata} = data;
 </script>
 
 <svelte:head>
-  <title>{metadata.title} - Romain</title>
+	<title>{metadata.title} - Romain</title>
 </svelte:head>
 
-<OpenGraph title="{metadata.title} - Romain" description={metadata.subtitle} type="article" publishedTime={metadata.time} image={metadata.hero} imageAlt={metadata.hero_alt} />
+<OpenGraph
+	title="{metadata.title} - Romain"
+	description={metadata.subtitle}
+	type="article"
+	publishedTime={metadata.time}
+	image={metadata.hero}
+	imageAlt={metadata.hero_alt}
+/>
 
 <div class="main_wrapper">
-  
-  <div class="presentation">
-    {#if metadata.hero}
-      <div class="hero">
-        <h1>{metadata.title}</h1>
-        <img src="/images/hero/{metadata.hero}" alt={metadata.hero_alt}/>
-      </div>
-    {:else}
-      <h1>{metadata.title}</h1>
-    {/if}
-    <h2 class="h5">{metadata.subtitle}</h2>
-    <p>
-      <time datetime={metadata.date}>
-        {new Date(metadata.date).toLocaleDateString("en-US", { year: "numeric", month: 'long', day: 'numeric' })}
-      </time>
-      — a {metadata.readTime} minute{metadata.readTime > 1 ? "s" : ""} read
-    </p>
-    
-    <div class="categories">
-      {#each metadata.categories as category}
-        <a href="/blog?category={category}">{category}</a>
-      {/each}
-    </div>
+	<div class="presentation">
+		{#if metadata.hero}
+			<div class="hero">
+				<h1>{metadata.title}</h1>
+				<img src="/images/hero/{metadata.hero}" alt={metadata.hero_alt} />
+			</div>
+		{:else}
+			<h1>{metadata.title}</h1>
+		{/if}
+		<h2 class="h5">{metadata.subtitle}</h2>
+		<p>
+			<time datetime={metadata.date}>
+				{new Date(metadata.date).toLocaleDateString('en-US', {
+					year: 'numeric',
+					month: 'long',
+					day: 'numeric'
+				})}
+			</time>
+			— a {metadata.readTime} minute{metadata.readTime > 1 ? 's' : ''} read
+		</p>
 
-  </div>
-  <hr/>
-  
-  <div class="article">
-    <!-- <svelte:component this={Content} /> // A nice alternative -->
-    <Content />
-  </div>
+		<div class="categories">
+			{#each metadata.categories as category}
+				<a href="/blog?category={category}">{category}</a>
+			{/each}
+		</div>
+	</div>
+	<hr />
+
+	<div class="article">
+		<!-- <svelte:component this={Content} /> // A nice alternative -->
+		<Content />
+	</div>
 </div>
 
 <style lang="scss">
@@ -102,7 +111,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 1;
-      
+
       margin: 0;
       width: 100%;
 
@@ -125,7 +134,7 @@
     }
   }
 
-  .categories {    
+  .categories {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -136,7 +145,7 @@
 
       margin: 3px;
       padding: 1px 8px;
-  
+
       background-color: var(--primary);
       color: var(--background);
 
@@ -146,6 +155,6 @@
       text-decoration: none;
     }
   }
-  
+
 
 </style>
