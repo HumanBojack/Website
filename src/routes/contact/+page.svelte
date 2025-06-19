@@ -26,7 +26,7 @@
           </svg>
         </h2>
         <p>Contact me on linkedin if you're interested in a professional collaboration.</p>
-        <a class="btn" href="https://www.linkedin.com/in/romain-spychala/">Add me</a>
+        <a class="btn" href="https://www.linkedin.com/in/spyr-dev/">Add me</a>
       </div>
 
       <div class="contact-box">
