@@ -8,8 +8,7 @@
 <h2>Hello, this is Romain.</h2>
 <p>I'm a {calculateAge("11/20/2001")} years old developer based in Lille, France.</p>
 <p>
-  Currently, I'm doing work-study, working at Mathflow as a backend developer and studying at Epitech.
-  My current goal is to improve in backend web development and devops.
+  I just finished my master's degree at Epitech. During my studies, I have been working at Genfit and Mathflow as a backend developer (go / python)
 </p>
 <div>
   <p>Contact me on my socials:</p>
@@ -21,7 +20,7 @@
       </svg>
     </a>
 
-    <a href="https://www.linkedin.com/in/romain-spychala/">
+    <a href="https://www.linkedin.com/in/spyr-dev/">
       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512.003 512.003" style="enable-background:new 0 0 512.003 512.003;" xml:space="preserve">
           <path d="M68.762,5.195h-0.06c-18.261,0-35.482,7.1-48.478,19.985C7.185,38.1,0,55.243,0,73.453 c-0.009,18.611,7.33,36.053,20.625,49.092c12.894,12.629,30.481,19.721,47.531,19.311c0.495,0.009,0.99,0.017,1.493,0.017 c17.092,0,34.014-6.963,46.618-19.251c13.286-12.945,20.625-30.319,20.668-48.922c0.043-18.193-7.074-35.362-20.019-48.358 C103.979,12.363,86.878,5.212,68.762,5.195z"/>
           <path d="M102.403,158.941H33.411c-13.713,0-24.875,11.511-24.875,25.651v298.615c0,13.841,11.725,25.532,25.6,25.532h68.267 c13.875,0,25.6-11.46,25.6-25.011V184.541C128.003,170.666,116.279,158.941,102.403,158.941z"/>
