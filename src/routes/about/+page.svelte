@@ -42,8 +42,8 @@
 					to learn new things.
 				</p>
 				<p>
-					I'm currently working at Genfit, a biotech company in Lille. My main project is the
-					development and cloud hosting of a web app integrating large deep learning models.
+          I currently am searching for a new work opportunity after obtaining my master at Epitech.
+          Previously, I have been working as a backend developer at Genfit (a biotech) and Mathflow (a startup in education). I am specialized in go and python.
 				</p>
 			</div>
 		</div>
@@ -72,6 +72,20 @@
 					could deepen my knowledge on the subjects I was especially interested in. I also got to
 					work with other people, some of them are now my friends.
 				</p>
+        <p>
+          Parallel to that, I was working at Genfit, a biopharma, where I was developing a tool to help the histology team quantify dying cells.
+        </p>
+        <h3>2023-2025</h3>
+        <p>
+          Epitech was another learning experience centered around group projects.
+          Since many technology and project choices were mine, I decided to deepen my go, rust and c++ knowledge.
+        </p>
+        <p>
+          I lead an end of study project centered about a music plugin known as a VST that was developed in Rust using <a href="https://github.com/robbert-vdh/nih-plug">nih-plug</a>.
+        </p>
+        <p>
+          I was working at Mathflow, a startup in math education, to help build the app and especially the different APIs along with the server infrastructure.
+        </p>
 			</div>
 		</div>
 
@@ -100,6 +114,15 @@
 					alt="Simplon.co, logo"
 				/>
 			</div>
+
+			<div class="image-frame" data-year="2023-2025">
+				<img
+					src={$isDarkTheme
+						? '/images/about/epitech_logo.png'
+						: '/images/about/epitech_logo.png'}
+					alt="Epitech, logo"
+				/>
+			</div>
 		</div>
 
 		<div class="hobbies">
@@ -119,13 +142,12 @@
 				<li>Learning different keyboards layouts (qwerty, colemak dh)</li>
 			</ul>
 			<p>
-				Currently, I spend my free time reading about typography, watching videos and riding my bike
-				on saturdays.
+        Currently, I spend a lot of time learning to make music using a DAW, sound design and bass playing (I started in may 2025).
 			</p>
 		</div>
 
 		<div class="hobbies-fig image-frame">
-			<img src="/images/about/keyboard.jpg" alt="Keyboard" />
+			<img src="/images/about/bass.jpg" alt="A Cort Action PJ hanging on the wall, it has a purple strap and the bass has a glossy almost orange wood" />
 		</div>
 
 		<div class="skills">
