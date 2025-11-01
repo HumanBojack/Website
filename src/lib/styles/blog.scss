@@ -59,6 +59,12 @@ img + em {
     word-wrap: break-word;
     word-break: break-word;
   }
+
+  blockquote {
+    border-left: solid var(--secondary-light);
+    margin: 1.3em 0;
+    padding: 0 1.3em;
+  }
 }
 
 .external-link-icon {
