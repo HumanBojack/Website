@@ -51,5 +51,6 @@ This is a quick article, but mostly the issues I currently have are:
 - the core usage encourages stealing by providing generations based on someone else's work, often copying it with added errors
 - the misinformation and confidence that it serves
 - the fact that it poisons the rest of the web
+- Gen AI is a tool CURRENTLY being used by the far right to create and spread racist narratives
 
 All of this is on the top of my head, and of course there's many more arguments.
