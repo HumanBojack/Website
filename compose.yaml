@@ -1,6 +1,7 @@
 services:
   website:
     restart: unless-stopped
+    container_name: website-dev
     build:
       context: .
       dockerfile: Containerfile.dev
