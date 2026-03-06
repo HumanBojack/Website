@@ -1,0 +1,15 @@
+services:
+  website:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Containerfile.dev
+    ports:
+      - "8090:3000"
+    develop:
+      watch:
+        - path: ./src/
+          action: sync
+          target: /app/src/
+        - path: package*.json
+          action: rebuild
