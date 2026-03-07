@@ -56,6 +56,22 @@ const paintSpriteMap = [
   [25142, 671]
 ]
 
+const keyboardSpriteMap = [
+  [0, 204],
+  [845, 249],
+  [1447, 225],
+  [2377, 278],
+  [3382, 119],
+  [3992, 230],
+  [4436, 171],
+  [5435, 186],
+  [5938, 175],
+  [7221, 201],
+  [7989, 254],
+  [9036, 189],
+  [9578, 220],
+]
+
 // Look mum I used types in typescript for once !!
 const random = <Type>(list: Array<Type>): Type => {
   return list[Math.floor(Math.random() * list.length)];
@@ -101,9 +117,20 @@ const playRandomPaintSound = () => {
   s.play(i);
 }
 
+const playRandomKeyboardSound = () => {
+  let i = random(Object.keys(keyboardSpriteMap))
+  let s = new Howl({
+    src: ["/audio/sprites/keyboard.mp3", "/audio/sprites/keyboard.wav"],
+    sprite: keyboardSpriteMap,
+  })
+
+  s.play(i);
+}
+
 export {
   playRandomBassNote,
   playRandomVoiceClip,
   playRandomSynthNote,
   playRandomPaintSound,
+  playRandomKeyboardSound,
 }
