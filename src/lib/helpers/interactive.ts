@@ -23,6 +23,14 @@ const voiceSpriteMap = [
   [17019, 864],
   [19106, 696]
 ]
+
+const synthSpriteMap = {
+  "Em": [0, 2769],
+  "Am/E": [3692, 2769],
+  "Cmaj/E": [7385, 2769],
+  "Bm/Gb": [11077, 2769],
+}
+
 // Look mum I used types in typescript for once !!
 const random = <Type>(list: Array<Type>): Type => {
   return list[Math.floor(Math.random() * list.length)];
@@ -48,7 +56,18 @@ const playRandomVoiceClip = () => {
   s.play(line);
 }
 
+const playRandomSynthNote = () => {
+  let note = random(Object.keys(synthSpriteMap))
+  let s = new Howl({
+    src: ["/audio/sprites/synth.mp3", "/audio/sprites/synth.wav"],
+    sprite: synthSpriteMap,
+  })
+
+  s.play(note);
+}
+
 export {
   playRandomBassNote,
-  playRandomVoiceClip
+  playRandomVoiceClip,
+  playRandomSynthNote,
 }
