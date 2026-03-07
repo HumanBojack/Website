@@ -1,25 +1,14 @@
 @use "sass:color";
 
-$themes: (
-  "light": (
-    "primary": #303437,     // Accent 1
-    "secondary": #78A1BB,   // Accent 2
-    "background": #FDF5ED,  // Neutral 1
-    "neutral": #2C2A4A,     // Neutral 2
-    "contrast": #CE7A12,    // Contrast (call to action)
-    "muted": #535353d8,
-    "text": #303437
-  ),
-  "dark": (
-    "primary": #FDF5ED,
-    "secondary": #78A1BB,
-    "background": #303437,
-    "neutral": #2C2A4A,
-    "contrast": #CE7A12,
-    "muted": #bdbdbd,
-    "text": #FDF5ED
-  )
-  );
+$theme: (
+  "primary": #C8A2C8,
+  "secondary": #5D576B,
+  "background": #0A636B,
+  "neutral": #2C2A4A,
+  "contrast": #FFCA3A,
+  "muted": #bdbdbd,
+  "text": #FDF5ED
+);
 
 $max-width: 1200px;
 $margin: 20px;
@@ -31,22 +20,17 @@ $article-max-width-margin: $article-max-width + (2 * $margin);
 $header-height: 40px;
 $header-padding: 0.75rem;
 
-@each $theme-name, $properties in $themes {
-  .#{$theme-name} {
-    // define a css variable for each property
-    @each $name, $property in $properties {
-      --#{$name}: #{$property};
-      --#{$name}-light: #{color.scale($property, $alpha: -60%)};
-
-      @if ($name == "primary") {
-        --#{$name}-dark: #{color.scale($property, $lightness: -10%)};
-        --#{$name}-darker: #{color.scale($property, $lightness: -20%)};
-      }
-    }
-  }
-};
-
 :root {
   --max-width: $max-width;
   --margin: $margin;
+
+  @each $color-name, $color-code in $theme {
+    --#{$color-name}: #{$color-code};
+    --#{$color-name}-light: #{color.scale($color-code, $alpha: -60%)};
+
+    @if ($color-name == "primary") {
+      --#{$color-name}-dark: #{color.scale($color-code, $lightness: -10%)};
+      --#{$color-name}-darker: #{color.scale($color-code, $lightness: -20%)};
+    }
+  };
 }

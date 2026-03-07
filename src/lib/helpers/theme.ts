@@ -1,52 +1,50 @@
-import { writable, derived } from 'svelte/store';
 import { browser } from '$app/environment';
 
-const storageKey = "theme";
+const colorsLightnesses = {
+  "primary": 70,
+  "secondary": 38,
+  "background": 23,
+  "neutral": 23,
+  "contrast": 80,
+  "muted": 74,
+  "text": 70
+}
 
-const prefersDarkTheme = (): boolean => {
-  if (!browser) {
-    return false;
+const getCurrentColors = () => {
+  let colorCodes = {}
+  if (browser) {
+    let colors = Object.keys(colorsLightnesses)
+    colors.forEach((color) => {
+      colorCodes[color] = window.getComputedStyle(document.body).getPropertyValue(`--${color}`)
+    })
   }
 
-  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  return colorCodes
 }
 
-const preferredTheme = (): string => {
-  return prefersDarkTheme() ? "dark" : "light"
+const setRandomTheme = () => {
+  Object.entries(colorsLightnesses).forEach(([color, lightness]) => {
+    let hue = Math.floor(Math.random() * 360)
+    let saturation = Math.floor(Math.random() * 101)
+    document.body.style.setProperty(`--${color}`, `hsl(${hue} ${saturation}% ${lightness}%)`)
+  })
 };
 
-const getInitialTheme = (): string => {
-  if (!browser) return 'light';
-  return localStorage.getItem(storageKey) ?? (prefersDarkTheme() ? "dark" : "light");
-};
-
-const theme = writable<string>(getInitialTheme());
-const isDarkTheme = derived(theme, $theme => $theme === 'dark');
-
-if (browser) {
-  theme.subscribe(value => {
-    localStorage.setItem(storageKey, value);
-    document.body.classList.remove('dark', 'light');
-    document.body.classList.add(value);
-  });
-
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-      if (!localStorage.getItem(storageKey)) {
-        theme.set(e.matches ? 'dark' : 'light');
-      }
-  });
+const saveColorTheme = () => {
+  let theme = getCurrentColors();
+  // TODO: save the current theme in localStorage
+  console.log("saving theme", theme)
 }
 
-const toggleTheme = () => {
-  theme.update(value => value === 'dark' ? 'light' : 'dark');
-};
-
+const resetColorTheme = () => {
+  // TODO: reset local storage
+  // TODO: force page reload
+  location.reload()
+  return
+}
 
 export {
-  preferredTheme,
-  prefersDarkTheme,
-  storageKey,
-  theme,
-  isDarkTheme,
-  toggleTheme
+  setRandomTheme,
+  saveColorTheme,
+  resetColorTheme,
 }

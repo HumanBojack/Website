@@ -1,9 +1,9 @@
 <script lang="ts">
-  import OpenGraph from '$lib/components/OpenGraph.svelte';
-  import { calculateAge } from "$lib/helpers/calculateAge";
-  import { isDarkTheme } from '$lib/helpers/theme';
+	import OpenGraph from '$lib/components/OpenGraph.svelte';
+	import { calculateAge } from '$lib/helpers/calculateAge';
+	const isDarkTheme = true;
 
-  let y: number;
+	let y: number;
 </script>
 
 <svelte:window bind:scrollY={y} />
@@ -42,8 +42,9 @@
 					to learn new things.
 				</p>
 				<p>
-          I currently am searching for a new work opportunity after obtaining my master at Epitech.
-          Previously, I have been working as a backend developer at Genfit (a biotech) and Mathflow (a startup in education). I am specialized in go and python.
+					I currently am searching for a new work opportunity after obtaining my master at Epitech.
+					Previously, I have been working as a backend developer at Genfit (a biotech) and Mathflow
+					(a startup in education). I am specialized in go and python.
 				</p>
 			</div>
 		</div>
@@ -72,27 +73,31 @@
 					could deepen my knowledge on the subjects I was especially interested in. I also got to
 					work with other people, some of them are now my friends.
 				</p>
-        <p>
-          Parallel to that, I was working at Genfit, a biopharma, where I was developing a tool to help the histology team quantify dying cells.
-        </p>
-        <h3>2023-2025</h3>
-        <p>
-          Epitech was another learning experience centered around group projects.
-          Since many technology and project choices were mine, I decided to deepen my go, rust and c++ knowledge.
-        </p>
-        <p>
-          I lead an end of study project centered about a music plugin known as a VST that was developed in Rust using <a href="https://github.com/robbert-vdh/nih-plug">nih-plug</a>.
-        </p>
-        <p>
-          I was working at Mathflow, a startup in math education, to help build the app and especially the different APIs along with the server infrastructure.
-        </p>
+				<p>
+					Parallel to that, I was working at Genfit, a biopharma, where I was developing a tool to
+					help the histology team quantify dying cells.
+				</p>
+				<h3>2023-2025</h3>
+				<p>
+					Epitech was another learning experience centered around group projects. Since many
+					technology and project choices were mine, I decided to deepen my go, rust and c++
+					knowledge.
+				</p>
+				<p>
+					I lead an end of study project centered about a music plugin known as a VST that was
+					developed in Rust using <a href="https://github.com/robbert-vdh/nih-plug">nih-plug</a>.
+				</p>
+				<p>
+					I was working at Mathflow, a startup in math education, to help build the app and
+					especially the different APIs along with the server infrastructure.
+				</p>
 			</div>
 		</div>
 
 		<div class="path-fig">
 			<div class="image-frame" data-year="2020">
 				<img
-					src={$isDarkTheme
+					src={isDarkTheme
 						? '/images/about/univ_rouen_dark_logo.png'
 						: '/images/about/univ_rouen_logo.png'}
 					alt="Université de Rouen Normandie, logo"
@@ -101,14 +106,14 @@
 
 			<div class="image-frame" data-year="2021">
 				<img
-					src={$isDarkTheme ? '/images/about/THP_dark_logo.png' : '/images/about/THP_logo.png'}
+					src={isDarkTheme ? '/images/about/THP_dark_logo.png' : '/images/about/THP_logo.png'}
 					alt="The Hacking Project, logo"
 				/>
 			</div>
 
 			<div class="image-frame" data-year="2022-2023">
 				<img
-					src={$isDarkTheme
+					src={isDarkTheme
 						? '/images/about/simplon_dark_logo.png'
 						: '/images/about/simplon_logo.png'}
 					alt="Simplon.co, logo"
@@ -117,9 +122,7 @@
 
 			<div class="image-frame" data-year="2023-2025">
 				<img
-					src={$isDarkTheme
-						? '/images/about/epitech_logo.png'
-						: '/images/about/epitech_logo.png'}
+					src={isDarkTheme ? '/images/about/epitech_logo.png' : '/images/about/epitech_logo.png'}
 					alt="Epitech, logo"
 				/>
 			</div>
@@ -142,12 +145,16 @@
 				<li>Learning different keyboards layouts (qwerty, colemak dh)</li>
 			</ul>
 			<p>
-        Currently, I spend a lot of time learning to make music using a DAW, sound design and bass playing (I started in may 2025).
+				Currently, I spend a lot of time learning to make music using a DAW, sound design and bass
+				playing (I started in may 2025).
 			</p>
 		</div>
 
 		<div class="hobbies-fig image-frame">
-			<img src="/images/about/bass.jpg" alt="A Cort Action PJ hanging on the wall, it has a purple strap and the bass has a glossy almost orange wood" />
+			<img
+				src="/images/about/bass.jpg"
+				alt="A Cort Action PJ hanging on the wall, it has a purple strap and the bass has a glossy almost orange wood"
+			/>
 		</div>
 
 		<div class="skills">
@@ -183,177 +190,188 @@
 </div>
 
 <style lang="scss">
-  .main_wrapper {
-    max-width: $max-width;
-    margin: 0 auto;
+	.main_wrapper {
+		max-width: $max-width;
+		margin: 0 auto;
 
-    @media (max-width: $max-width-margin) {
-      margin: 0 $margin;
+		@media (max-width: $max-width-margin) {
+			margin: 0 $margin;
 
-      .hobbies-fig img {
-        width: 100%;
-      }
-    }
-  }
+			.hobbies-fig img {
+				width: 100%;
+			}
+		}
+	}
 
-  .hero {
-    height: calc(100vh - ($header-height + 2 * $header-padding));
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	.hero {
+		height: calc(100vh - ($header-height + 2 * $header-padding));
+		display: flex;
+		justify-content: center;
+		align-items: center;
 
-    h1 {
-      font-size: clamp(4rem, 10vw, 8rem);
-      text-align: center;
-      margin: 0;
-    }
+		h1 {
+			font-size: clamp(4rem, 10vw, 8rem);
+			text-align: center;
+			margin: 0;
+		}
 
-    .scroll-icon {
-      color: var(--text-color);
-      position: absolute;
-      bottom: 5%;
-      left: 50%;
-      transform: translate(-50%, 0);
-      animation: up-and-down 2s ease-in-out infinite;
+		.scroll-icon {
+			color: var(--text-color);
+			position: absolute;
+			bottom: 5%;
+			left: 50%;
+			transform: translate(-50%, 0);
+			animation: up-and-down 2s ease-in-out infinite;
 
-      svg {
-        width: 2em;
-        height: 2em;
-      }
-    }
-  }
+			svg {
+				width: 2em;
+				height: 2em;
+			}
+		}
+	}
 
-  @keyframes up-and-down {
-    0% { bottom: 5%; }
-    50% { bottom: 7%; }
-    100% { bottom: 5%; }
-  }
+	@keyframes up-and-down {
+		0% {
+			bottom: 5%;
+		}
+		50% {
+			bottom: 7%;
+		}
+		100% {
+			bottom: 5%;
+		}
+	}
 
-  .container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
-    grid-column-gap: 20px;
-    grid-row-gap: 100px;
-    align-items: center;
+	.container {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: 1fr;
+		grid-column-gap: 20px;
+		grid-row-gap: 100px;
+		align-items: center;
 
-    h2 {
-      text-align: center;
-    }
+		h2 {
+			text-align: center;
+		}
 
-    .presentation {
-      grid-area: 1 / 1 / span 1 / span 1;
-    }
+		.presentation {
+			grid-area: 1 / 1 / span 1 / span 1;
+		}
 
-    .presentation-fig {
-      grid-area: 1 / 2 / span 1 / span 1;
-      aspect-ratio: 1 / 1;
-    }
+		.presentation-fig {
+			grid-area: 1 / 2 / span 1 / span 1;
+			aspect-ratio: 1 / 1;
+		}
 
-    .path {
-      grid-area: 2 / 2 / span 1 / span 1;
-    }
+		.path {
+			grid-area: 2 / 2 / span 1 / span 1;
+		}
 
-    .path-fig {
-      grid-area: 2 / 1 / span 1 / span 1;
-    }
+		.path-fig {
+			grid-area: 2 / 1 / span 1 / span 1;
+		}
 
-    .hobbies {
-      grid-area: 3 / 1 / span 1 / span 1;
-    }
+		.hobbies {
+			grid-area: 3 / 1 / span 1 / span 1;
+		}
 
-    .skills {
-      grid-area: 4 / 2 / span 1 / span 1;
-    }
+		.skills {
+			grid-area: 4 / 2 / span 1 / span 1;
+		}
 
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-      grid-template-rows: auto;
+		@media (max-width: 768px) {
+			grid-template-columns: 1fr;
+			grid-template-rows: auto;
 
-      .presentation, .path, .hobbies, .skills, .presentation-fig, .path-fig {
-        grid-area: auto;
-      }
-    }
-  }
+			.presentation,
+			.path,
+			.hobbies,
+			.skills,
+			.presentation-fig,
+			.path-fig {
+				grid-area: auto;
+			}
+		}
+	}
 
-  .image-frame {
-    overflow: hidden;
+	.image-frame {
+		overflow: hidden;
 
-    img {
-      display: block;
-      width: 100%;
-    }
-  }
+		img {
+			display: block;
+			width: 100%;
+		}
+	}
 
-  .hobbies-fig img {
-    width: 60%;
-    display: block;
-    margin: 0 auto;
-  }
+	.hobbies-fig img {
+		width: 60%;
+		display: block;
+		margin: 0 auto;
+	}
 
-  .path-fig {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	.path-fig {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 
-    .image-frame {
-      width: 60%;
-    }
+		.image-frame {
+			width: 60%;
+		}
 
-    div {
-      border-top: 3px solid;
-      border-image: linear-gradient(to right, var(--primary) 0%, var(--secondary) 100%);
-      border-image-slice: 1;
-      border-width: 3px;
-      margin: 0;
-      padding: 40px;
-      position: relative;
-      overflow: visible;
+		div {
+			border-top: 3px solid;
+			border-image: linear-gradient(to right, var(--primary) 0%, var(--secondary) 100%);
+			border-image-slice: 1;
+			border-width: 3px;
+			margin: 0;
+			padding: 40px;
+			position: relative;
+			overflow: visible;
 
-      &:before {
-        content: attr(data-year);
-        position: absolute;
-        color: var(--primary);
-        font-size: 1.2em;
-        font-weight: 500;
+			&:before {
+				content: attr(data-year);
+				position: absolute;
+				color: var(--primary);
+				font-size: 1.2em;
+				font-weight: 500;
 
-        writing-mode: vertical-lr;
-        height: 100%;
-        text-align: center;
-        top: 0;
-      }
-    }
+				writing-mode: vertical-lr;
+				height: 100%;
+				text-align: center;
+				top: 0;
+			}
+		}
 
-    //odd number borders
-    div:nth-child(odd) {
-      border-right: 3px solid;
-      padding-left: 0;
+		//odd number borders
+		div:nth-child(odd) {
+			border-right: 3px solid;
+			padding-left: 0;
 
-      &:before {
-        left: 100%;
-      }
-    }
+			&:before {
+				left: 100%;
+			}
+		}
 
-    //even number borders
-    div:nth-child(even) {
-      border-left: 3px solid;
-      padding-right: 0;
+		//even number borders
+		div:nth-child(even) {
+			border-left: 3px solid;
+			padding-right: 0;
 
-      &:before {
-        right: 100%;
-        transform: rotate(180deg);
-      }
-    }
+			&:before {
+				right: 100%;
+				transform: rotate(180deg);
+			}
+		}
 
-    //handle first and last
-    div:first-child {
-      border-top: 0;
-      border-top-right-radius:0;
-      border-top-left-radius:0;
-    }
-    div:last-child {
-      border-bottom-right-radius:0;
-      border-bottom-left-radius:0;
-    }
-  }
+		//handle first and last
+		div:first-child {
+			border-top: 0;
+			border-top-right-radius: 0;
+			border-top-left-radius: 0;
+		}
+		div:last-child {
+			border-bottom-right-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+	}
 </style>
