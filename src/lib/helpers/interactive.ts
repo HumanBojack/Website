@@ -1,7 +1,13 @@
 import { Howl } from 'howler';
 
-// Not pretty but it avoids using fs and I can tweak the scale from code
-const bassNotes = ["e", "g", "a", "b", "d", "eO"]
+const bassSpriteMap = {
+  "e0": [0, 531],
+  "d": [1031, 520],
+  "b": [2051, 518],
+  "a": [3069, 519],
+  "g": [4088, 520],
+  "e": [5108, 515]
+}
 
 // Look mum I used types in typescript for once !!
 const random = <Type>(list: Array<Type>): Type => {
@@ -9,12 +15,13 @@ const random = <Type>(list: Array<Type>): Type => {
 }
 
 const playRandomBassNote = () => {
-  let note = random(bassNotes)
+  let note = random(Object.keys(bassSpriteMap))
   let s = new Howl({
-    src: [`/audio/bass/${note}.mp3`]
+    src: ["/audio/sprites/bass.mp3", "/audio/sprites/bass.wav"],
+    sprite: bassSpriteMap
   })
 
-  s.play();
+  s.play(note);
 }
 
 export {
