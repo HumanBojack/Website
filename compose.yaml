@@ -1,5 +1,5 @@
 services:
-  website:
+  website-dev:
     restart: unless-stopped
     container_name: website-dev
     build:
@@ -12,5 +12,8 @@ services:
         - path: ./src/
           action: sync
           target: /app/src/
+        - path: ./static/
+          action: sync
+          target: /app/static/
         - path: package*.json
           action: rebuild
