@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Interactible } from '$lib/helpers/interactive';
+	import { bassState } from '$lib/helpers/state.svelte';
 	import { onMount } from 'svelte';
 
 	const bassSpriteMap = {
@@ -14,6 +15,7 @@
 	let i: Interactible;
 	onMount(() => {
 		i = new Interactible('bass', bassSpriteMap, button);
+		bassState.interactive = i;
 	});
 </script>
 
