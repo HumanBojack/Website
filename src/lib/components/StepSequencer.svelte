@@ -1,21 +1,47 @@
 <script lang="ts">
-	import { bassState } from '$lib/helpers/state.svelte';
+	import {
+		bassState,
+		factsState,
+		keyboardState,
+		synthState,
+		themeState
+	} from '$lib/helpers/state.svelte';
 	const stepLength = 16;
 	const visualDivision = 4;
 	const noteType = 0.5;
 	const bpm = 130;
 	const secondsPerBeat = 1 / (bpm / 60);
 
-	// TODO: need to do that per instrument
-	let steps = [];
-	for (let i = 0; i < stepLength; i++) {
-		steps.push({
-			accentuate: Boolean(Math.floor(i / visualDivision) % 2),
-			selected: false,
-			ontime: false
-		});
-	}
-	let stepsState = $state(steps);
+	const instruments = {
+		Bass: {
+			state: bassState,
+			steps: null
+		},
+		Facts: {
+			state: factsState
+		},
+		Keyboard: {
+			state: keyboardState
+		},
+		Synth: {
+			state: synthState
+		},
+		Theme: {
+			state: themeState
+		}
+	};
+
+	Object.keys(instruments).forEach((name) => {
+		let steps = $state([]);
+		for (let y = 0; y < stepLength; y++) {
+			steps.push({
+				accentuate: Boolean(Math.floor(y / visualDivision) % 2),
+				selected: false,
+				ontime: false
+			});
+		}
+		instruments[name].steps = steps;
+	});
 
 	// Play pause
 	let playing = $state(false);
@@ -26,8 +52,10 @@
 	};
 
 	const updateSequencer = () => {
-		stepsState.forEach((step, i) => {
-			step.ontime = i == cursor;
+		Object.keys(instruments).forEach((name) => {
+			instruments[name].steps.forEach((step, i) => {
+				step.ontime = i == cursor;
+			});
 		});
 	};
 
@@ -46,39 +74,47 @@
 
 	const runPlayLoop = async () => {
 		while (playing) {
+			let previousCursor = cursor;
 			increaseCursor();
 			updateSequencer();
-			let currentStep = stepsState[cursor];
-			currentStep.ontime = true;
-			if (currentStep.selected) {
-				console.log('step selected');
-				bassState.interactive.interact();
-			}
+
+			Object.keys(instruments).forEach((name) => {
+				let previousStep = instruments[name]['steps'][previousCursor];
+				if (previousStep) {
+					previousStep.ontime = false;
+				}
+
+				let currentStep = instruments[name]['steps'][cursor];
+				currentStep.ontime = true;
+
+				if (currentStep.selected) {
+					instruments[name].state.interactive.interact();
+				}
+			});
 
 			// remove time taken from the sleep ?
 			await new Promise((r) => setTimeout(r, secondsPerBeat * noteType * 1000));
-			currentStep.ontime = false;
 		}
 	};
 </script>
 
 <div class="sequencer">
 	<button onclick={playPause}> Play </button>
-	<button onclick={increaseCursor}> increase </button>
-	<button onclick={updateSequencer}> update </button>
 
-	<!-- TODO: loop over each interactive to create it's lane -->
-	<div class="line">
-		{#each stepsState as { accentuate, selected, ontime }, i}
-			<div
-				class="block"
-				class:ontime
-				class:selected
-				class:accentuate
-				onclick={() => (stepsState[i].selected = !stepsState[i].selected)}
-			></div>
-		{/each}
-	</div>
+	{#each Object.keys(instruments) as name (name)}
+		<div class="line">
+			{#each instruments[name].steps as { accentuate, selected, ontime }, i}
+				<div
+					class="block"
+					class:ontime
+					class:selected
+					class:accentuate
+					onclick={() =>
+						(instruments[name].steps[i].selected = !instruments[name].steps[i].selected)}
+				></div>
+			{/each}
+		</div>
+	{/each}
 </div>
 
 <style lang="scss">

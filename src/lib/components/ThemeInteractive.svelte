@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Interactible } from '$lib/helpers/interactive';
+	import { themeState } from '$lib/helpers/state.svelte';
 	import { setRandomTheme } from '$lib/helpers/theme';
 	import { onMount } from 'svelte';
 
@@ -32,6 +33,7 @@
 	let i: Interactible;
 	onMount(() => {
 		i = new Interactible('paint', paintSpriteMap, button, setRandomTheme);
+		themeState.interactive = i;
 	});
 </script>
 

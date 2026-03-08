@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Interactible } from '$lib/helpers/interactive';
+	import { keyboardState } from '$lib/helpers/state.svelte';
 	import { onMount } from 'svelte';
 
 	// Muted modifiers since the noise was breaking the flow
@@ -23,6 +24,7 @@
 	let i: Interactible;
 	onMount(() => {
 		i = new Interactible('keyboard', keyboardSpriteMap, button);
+		keyboardState.interactive = i;
 	});
 </script>
 

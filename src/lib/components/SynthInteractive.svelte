@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Interactible } from '$lib/helpers/interactive';
+	import { synthState } from '$lib/helpers/state.svelte';
 	import { onMount } from 'svelte';
 
 	const synthSpriteMap = {
@@ -13,6 +14,7 @@
 	let i: Interactible;
 	onMount(() => {
 		i = new Interactible('synth', synthSpriteMap, button);
+		synthState.interactive = i;
 	});
 </script>
 
