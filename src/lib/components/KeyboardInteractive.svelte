@@ -2,6 +2,7 @@
 	import { Interactible } from '$lib/helpers/interactive';
 	import { onMount } from 'svelte';
 
+	// Muted modifiers since the noise was breaking the flow
 	const keyboardSpriteMap = [
 		[0, 204],
 		[845, 249],
@@ -11,11 +12,11 @@
 		[3992, 230],
 		[4436, 171],
 		[5435, 186],
-		[5938, 175],
-		[7221, 201],
-		[7989, 254],
-		[9036, 189],
-		[9578, 220]
+		[5938, 175]
+		// [7221, 201]
+		// [7989, 254],
+		// [9036, 189],
+		// [9578, 220]
 	];
 
 	let button: HTMLElement;
