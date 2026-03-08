@@ -16,14 +16,16 @@ class Interactible {
   name: string
   spritemap: Array<Array<number>> | Map<string, Array<number>>
   button: HTMLElement
+  callback: () => void
   soundnames: Array<string>
   s: Howl
   clicks: number
 
-  constructor(name, spritemap, button) {
+  constructor(name, spritemap, button, callback?= () => { }) {
     this.name = name;
     this.spritemap = spritemap;
     this.button = button;
+    this.callback = callback;
 
     this.soundnames = Object.keys(spritemap);
     this.s = new Howl({
@@ -40,9 +42,12 @@ class Interactible {
     // play a random sound
     let i = random(this.soundnames)
     this.s.play(i);
+    console.log(`${this.name}: played sound ${i} (${this.spritemap[i]})`)
 
     // animate the element
     this.button.animate(interactionAnimation, 300)
+
+    this.callback()
   }
 }
 
