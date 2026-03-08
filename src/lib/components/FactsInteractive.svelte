@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { getRandomFact } from '$lib/helpers/facts';
 	import { Interactible } from '$lib/helpers/interactive';
 	import { factsState } from '$lib/helpers/state.svelte';
 	import { onMount } from 'svelte';
@@ -24,7 +25,7 @@
 
 	onMount(() => {
 		i = new Interactible('voice', voiceSpriteMap, button, () => {
-			computerText.innerText = 'TODO: get a random text from a list';
+			computerText.innerText = getRandomFact();
 		});
 		factsState.interactive = i;
 	});
