@@ -11,6 +11,7 @@
 	const noteType = 0.5;
 	const bpm = 130;
 	const secondsPerBeat = 1 / (bpm / 60);
+	const sleepDuration = secondsPerBeat * noteType * 1000;
 
 	const instruments = {
 		Bass: {
@@ -74,6 +75,7 @@
 
 	const runPlayLoop = async () => {
 		while (playing) {
+			let start = performance.now();
 			let previousCursor = cursor;
 			increaseCursor();
 			updateSequencer();
@@ -91,9 +93,10 @@
 					instruments[name].state.interactive.interact();
 				}
 			});
+			let end = performance.now();
 
 			// remove time taken from the sleep ?
-			await new Promise((r) => setTimeout(r, secondsPerBeat * noteType * 1000));
+			await new Promise((r) => setTimeout(r, sleepDuration - (end - start)));
 		}
 	};
 </script>
