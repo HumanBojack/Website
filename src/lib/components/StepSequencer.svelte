@@ -99,28 +99,53 @@
 </script>
 
 <div class="sequencer">
-	<button onclick={playPause}> Play </button>
-
 	{#each Object.keys(instruments) as name (name)}
 		<div class="line">
-			{#each instruments[name].steps as { accentuate, selected, ontime }, i}
-				<div
-					class="block"
-					class:ontime
-					class:selected
-					class:accentuate
-					onclick={() =>
-						(instruments[name].steps[i].selected = !instruments[name].steps[i].selected)}
-				></div>
-			{/each}
+			<p>{name}</p>
+			<div class="block-line">
+				{#each instruments[name].steps as { accentuate, selected, ontime }, i}
+					<div
+						class="block"
+						class:ontime
+						class:selected
+						class:accentuate
+						onclick={() =>
+							(instruments[name].steps[i].selected = !instruments[name].steps[i].selected)}
+					></div>
+				{/each}
+			</div>
 		</div>
 	{/each}
+	<button onclick={playPause}>Play</button>
 </div>
 
 <style lang="scss">
 	.sequencer {
-		.line {
+		display: grid;
+		grid-template-columns: min-content max-content;
+		column-gap: 0.5em;
+
+		.block-line {
 			display: flex;
+		}
+
+		.line {
+			grid-column: 1/3;
+			display: grid;
+			grid-template-columns: subgrid;
+		}
+
+		p {
+			grid-column: 1 / 2;
+			padding: 0;
+			margin: 0;
+			display: block;
+			line-height: 100%;
+			align-content: center;
+		}
+
+		.block-line {
+			grid-column: 2 / 3;
 		}
 
 		.block {
@@ -128,6 +153,8 @@
 			width: 1.2em;
 			margin: 2px;
 			opacity: 0.5;
+
+			cursor: pointer;
 
 			background-color: var(--primary);
 		}
