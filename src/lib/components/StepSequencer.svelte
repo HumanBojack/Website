@@ -6,12 +6,19 @@
 		synthState,
 		themeState
 	} from '$lib/helpers/state.svelte';
+
 	const stepLength = 16;
 	const visualDivision = 4;
 	const noteType = 0.5;
-	const bpm = 130;
-	const secondsPerBeat = 1 / (bpm / 60);
-	const sleepDuration = secondsPerBeat * noteType * 1000;
+
+	const minBPM = 60;
+	const maxBPM = 500;
+
+	// Yes we should only use one bpm variable but it doesn't work if I remove one and it's 4am so let's keep that okay?
+	let dirtyBPM = $state(130);
+	let bpm = $derived(Math.min(Math.max(minBPM, dirtyBPM), maxBPM));
+	let secondsPerBeat = $derived(1 / (bpm / 60));
+	let sleepDuration = $derived(secondsPerBeat * noteType * 1000);
 
 	const instruments = {
 		Bass: {
@@ -95,7 +102,6 @@
 			});
 			let end = performance.now();
 
-			// remove time taken from the sleep ?
 			await new Promise((r) => setTimeout(r, sleepDuration - (end - start)));
 		}
 	};
@@ -119,7 +125,21 @@
 			</div>
 		</div>
 	{/each}
-	<button onclick={playPause}>Play</button>
+	<div class="controls">
+		<button onclick={playPause}>{playing ? 'Stop' : 'Play'}</button>
+		<div>
+			<label for="bpm">BPM</label>
+			<input
+				type="number"
+				id="bpm"
+				name="bpm"
+				min={minBPM}
+				max={maxBPM}
+				bind:value={dirtyBPM}
+				onchange={() => (dirtyBPM = bpm)}
+			/>
+		</div>
+	</div>
 </div>
 
 <style lang="scss">
@@ -136,6 +156,14 @@
 			grid-column: 1/3;
 			display: grid;
 			grid-template-columns: subgrid;
+		}
+
+		.controls {
+			display: flex;
+
+			div {
+				display: flex;
+			}
 		}
 
 		p {
